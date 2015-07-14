@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<action-sequence> 
+  <title/>
+  <version>1</version>
+  <logging-level>ERROR</logging-level>
+  <documentation> 
+    <author/>  
+    <description>Empty blank action sequence document</description>  
+    <help/>  
+    <result-type/>  
+    <icon/> 
+  </documentation>
+
+  <inputs/>
+
+  <outputs> 
+    <op type="string"> 
+      <destinations> 
+        <response>content</response> 
+      </destinations> 
+    </op> 
+  </outputs>
+
+  <resources/>
+  
+  <actions> 
+    <action-definition> 
+      <component-name>TemplateComponent</component-name>
+      <action-type>Message Template</action-type>
+      <action-outputs> 
+        <output-message type="string" mapping="op"/> 
+      </action-outputs>
+      <component-definition> 
+        <template><![CDATA[<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>JSP Page</title>
+        <script language="Javascript">
+          function forward(){
+          location.href="./Dashboard/Operation.jsp?y=1&months=5&sb=1&div=1&sect=1&zone=1&maj=1&b1=0&b2=0";
+          }
+        </script>
+		
+    </head>
+    <body onload=setTimeout('forward()')>
+    </body>
+</html>]]></template> 
+      </component-definition> 
+    </action-definition>
+ 
+  </actions> 
+</action-sequence>

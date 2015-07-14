@@ -1,0 +1,660 @@
+<Schema name="Financial_Analysis">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Product Name">
+    <Hierarchy visible="true" hasAll="true" primaryKey="ProductKey">
+      <View alias="dimproduct">
+        <SQL dialect="mysql">
+          <![CDATA[select * from DimProduct]]>
+        </SQL>
+      </View>
+      <Level name="ProductName" visible="true" column="ProductName" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Product Code" column="ProductCode" type="String">
+        </Property>
+        <Property name="BarCode" column="BarCode" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Product Category">
+    <Hierarchy visible="true" hasAll="true" allMemberName="All Product Categories" primaryKey="ProductKey">
+      <View alias="dimproducts">
+        <SQL dialect="mysql">
+          <![CDATA[select * from DimProduct]]>
+        </SQL>
+      </View>
+      <Level name="ProductCategory" visible="true" column="ProductCategory" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="CategoryGroupName" visible="true" hasAll="true" allMemberName="All Product Categories" primaryKey="ProductKey">
+      <View alias="dimproducts">
+        <SQL dialect="mysql">
+          <![CDATA[select * from DimProduct]]>
+        </SQL>
+      </View>
+      <Level name="ProductCategory" visible="true" column="ProductCategory" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="ProductGroup" visible="true" column="ProductGroup" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="ProductName" visible="true" column="ProductName" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        <Property name="Product Code" column="ProductCode" type="String">
+        </Property>
+        <Property name="BarCode" column="BarCode" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Product Group">
+    <Hierarchy visible="true" hasAll="true" allMemberName="All Product Groups" primaryKey="ProductKey">
+      <View alias="dimproduct">
+        <SQL dialect="mysql">
+          <![CDATA[select * from DimProduct]]>
+        </SQL>
+      </View>
+      <Level name="ProductGroup" visible="true" column="ProductGroup" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Group&#38;Name" visible="true" hasAll="true" allMemberName="All Product Groups" primaryKey="ProductKey">
+      <View alias="dimproduct">
+        <SQL dialect="mysql">
+          <![CDATA[select * from DimProduct]]>
+        </SQL>
+      </View>
+      <Level name="ProductGroup" visible="true" column="ProductGroup" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="ProductName" visible="true" column="ProductName" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        <Property name="Product Code" column="ProductCode" type="String">
+        </Property>
+        <Property name="BarCode" column="BarCode" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Product Type">
+    <Hierarchy visible="true" hasAll="true" primaryKey="ProductKey">
+      <View alias="dimproduct">
+        <SQL dialect="mysql">
+          <![CDATA[select * from DimProduct]]>
+        </SQL>
+      </View>
+      <Level name="ProductType" visible="true" column="ProductType" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Product Status">
+    <Hierarchy visible="true" hasAll="true" allMemberName="All Product Status" primaryKey="ProductKey">
+      <View alias="dimproduct">
+        <SQL dialect="mysql">
+          <![CDATA[select * from DimProduct]]>
+        </SQL>
+      </View>
+      <Level name="ProductStatus" visible="true" column="ProductStatus" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="UOM">
+    <Hierarchy visible="true" hasAll="true" primaryKey="ProductKey">
+      <View alias="dimproduct">
+        <SQL dialect="mysql">
+          <![CDATA[select * from DimProduct]]>
+        </SQL>
+      </View>
+      <Level name="UOM" visible="true" column="UOM" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Organization Company">
+    <Hierarchy visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="Company" visible="true" column="Company" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Organization Class">
+    <Hierarchy visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="BusinessUnit" visible="true" column="BusinessUnit" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="LineOfBusiness" visible="true" column="LineOfBusiness" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Division" visible="true" column="Division" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Section" visible="true" column="Section" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Area" visible="true" column="Area" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="BranchName " visible="true" column="BranchName" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        <Property name="BranchCode" column="BranchCode" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="BusinessUnit" visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="BusinessUnit" visible="true" column="BusinessUnit" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="LineOfBusiness" visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="LineOfBusiness" visible="true" column="LineOfBusiness" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Division" visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="Division" visible="true" column="Division" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Section" visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="Section" visible="true" column="Section" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Area" visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="Area" visible="true" column="Area" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="BranchName" visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="BranchName " visible="true" column="BranchName" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        <Property name="BranchCode" column="BranchCode" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Organization Revenue No use">
+    <Hierarchy visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="Revenue" visible="true" column="RevenueGroupDesc" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="RevenueGroupCode" column="RevenueGroup" type="String">
+        </Property>
+      </Level>
+      <Level name="Cate20" visible="true" column="cate20_desc" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Cate20Code" column="cate20" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Revenue" visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="Revenue" visible="true" column="RevenueGroupDesc" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="RevenueGroupCode" column="RevenueGroup" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Cate20" visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="Cate20" visible="true" column="cate20_desc" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Cate20Code" column="cate20" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="AccountType">
+    <Hierarchy visible="true" hasAll="true" primaryKey="AccountKey">
+      <View alias="DimAccount">
+        <SQL dialect="mysql">
+          <![CDATA[select  *
+FROM DimAccount
+WHERE  SUBSTR(AccountCode,1,1) not in ('A','D')
+]]>
+        </SQL>
+      </View>
+      <Level name="AccountType" visible="true" column="AccountType" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Account">
+    <Hierarchy visible="true" hasAll="true" primaryKey="AccountKey">
+      <View alias="DimAccount">
+        <SQL dialect="mysql">
+          <![CDATA[select  *
+FROM DimAccount
+WHERE  SUBSTR(AccountCode,1,1) not in ('A','D')
+]]>
+        </SQL>
+      </View>
+      <Level name="AccountCode" visible="true" column="AccountCode" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="SubsidiaryCode" visible="true" column="SubsidiaryCode" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        <Property name="SubsidiaryName" column="SubsidiaryName" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Organization BusinessUnit">
+    <Hierarchy visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="BusinessUnit" visible="true" column="BusinessUnit" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Organization LineOfBusiness">
+    <Hierarchy visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="LineOfBusiness" visible="true" column="LineOfBusiness" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Organization Division">
+    <Hierarchy visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="Division" visible="true" column="Division" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Organization Section">
+    <Hierarchy visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="Section" visible="true" column="Section" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Organization Area">
+    <Hierarchy visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="Area" visible="true" column="Area" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Organization Branch Name">
+    <Hierarchy visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="BranchName " visible="true" column="BranchName" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        <Property name="BranchCode" column="BranchCode" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Organization Revenue">
+    <Hierarchy visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="Revenue" visible="true" column="RevenueGroupDesc" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="RevenueGroupCode" column="RevenueGroup" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Organization Revenue Cate20">
+    <Hierarchy visible="true" hasAll="true" primaryKey="OrgKey">
+      <Table name="DimOrg">
+      </Table>
+      <Level name="Cate20" visible="true" column="cate20_desc" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Cate20Code" column="cate20" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="AccountCode">
+    <Hierarchy visible="true" hasAll="true" primaryKey="AccountKey">
+      <Table name="DimAccount">
+      </Table>
+      <Level name="AccountCode" visible="true" column="AccountCode" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="AccountSubsidiaryCode">
+    <Hierarchy visible="true" hasAll="true" primaryKey="AccountKey">
+      <Table name="DimAccount">
+      </Table>
+      <Level name="SubsudiaryCode" visible="true" column="SubsidiaryCode" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="SubsidiaryName" column="SubsidiaryName" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Source">
+    <Hierarchy visible="true" hasAll="true" primaryKey="ProductKey">
+      <Table name="DimProduct">
+      </Table>
+      <Level name="Source" visible="true" column="Source" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="AccountBalance" visible="true" cache="true" enabled="true">
+    <Table name="FactAccountBalance">
+    </Table>
+    <Dimension type="TimeDimension" visible="true" foreignKey="DateKey" highCardinality="false" name="Date">
+      <Hierarchy visible="true" hasAll="true" primaryKey="DateKey">
+        <Table name="DimDate">
+        </Table>
+        <Level name="Year" visible="true" column="Year" type="String" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+        <Level name="Month" visible="true" column="MonthNo" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+          <NameExpression>
+            <SQL dialect="mysql">
+              <![CDATA[CONCAT(CAST(`DimDate`.`Year` AS CHAR), ' ', `DimDate`.`MonthName`)]]>
+            </SQL>
+          </NameExpression>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <DimensionUsage source="Organization BusinessUnit" name="Organization BusinessUnit" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization LineOfBusiness" name="Organization LineOfBusiness" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization Division" name="Organization Division" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization Section" name="Organization Section" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization Area" name="Organization Area" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization Branch Name" name="Organization Branch Name" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization Revenue" name="Organization Revenue" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization Revenue Cate20" name="Organization Revenue Cate20" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="AccountType" name="AccountType" visible="true" foreignKey="AccountKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Account" name="Account" visible="true" foreignKey="AccountKey" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Actual Amount" column="BalanceAmount" formatString="#,###.00" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Budget Amount" column="BudgetAmount" formatString="#,###.00" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="YTD Actual Amount" column="AccumBalanceAmount" formatString="#,###.00" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="YTD Budget Amount" column="AccumBudgetAmount" formatString="#,###.00" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="ProductPrice" visible="true" cache="true" enabled="true">
+    <Table name="FactProductPrice">
+    </Table>
+    <Dimension type="TimeDimension" visible="true" foreignKey="DateKey" highCardinality="false" name="Date">
+      <Hierarchy visible="true" hasAll="true" primaryKey="DateKey">
+        <Table name="DimDate">
+        </Table>
+        <Level name="Year" visible="true" column="Year" type="String" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+        <Level name="Month" visible="true" column="MonthName" ordinalColumn="MonthNo" type="String" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+        </Level>
+        <Level name="Date" visible="true" column="Date" type="Date" uniqueMembers="true" levelType="TimeDays" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <DimensionUsage source="Product Category" name="Product Category" visible="true" foreignKey="ProductKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Product Group" name="Product Group" visible="true" foreignKey="ProductKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Product Type" name="Product Type" visible="true" foreignKey="ProductKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Product Name" name="Product Name" visible="true" foreignKey="ProductKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Product Status" name="Product Status" visible="true" foreignKey="ProductKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="UOM" name="UOM" visible="true" foreignKey="ProductKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Source" name="Source" visible="true" foreignKey="ProductKey" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Price ExcVat" column="PriceExcVAT" formatString="#,###.00" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Cost ExcVat" column="Cost" formatString="#,###.00" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Count Product" column="ProductKey" aggregator="distinct-count" visible="false">
+    </Measure>
+    <CalculatedMember name="Cost ExcVat Last Month" formatString="#,###.00" formula="sum(parallelperiod([Date].[Month],1,[Date].CurrentMember),[Measures].[Cost ExcVat])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Diff Cost ExcVat" formatString="#,###.00" formula="[Measures].[Cost ExcVat] - [Measures].[Cost ExcVat Last Month]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="% Diff Cost ExcVat" formatString="Percent" formula="[Measures].[Diff Cost ExcVat] / [Measures].[Cost ExcVat Last Month]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="%Cost" formatString="Percent" formula="[Measures].[Cost ExcVat] / [Measures].[Price ExcVat]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="% Margin" formatString="Percent" formula="([Measures].[Price ExcVat] - [Measures].[Cost ExcVat]) / [Measures].[Price ExcVat]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Average Margin" formula="(sum([Product Group].currentmember, [Measures].[Price ExcVat]) - sum([Product Group].currentmember, [Measures].[Cost ExcVat]) ) / [Measures].[Count Product]" dimension="Measures" visible="true">
+    </CalculatedMember>
+  </Cube>
+  <Cube name="BalanceSheet" visible="true" cache="true" enabled="true">
+    <Table name="BalanceSheet">
+    </Table>
+    <Dimension type="TimeDimension" visible="true" foreignKey="DateKey" highCardinality="false" name="Date">
+      <Hierarchy visible="true" hasAll="true" primaryKey="DateKey">
+        <Table name="DimDate">
+        </Table>
+        <Level name="Year" visible="true" column="Year" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+        <Level name="Month" visible="true" column="MonthNo" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+          <NameExpression>
+            <SQL dialect="mysql">
+              <![CDATA[CONCAT(CAST(`DimDate`.`Year` AS CHAR), ' ', `DimDate`.`MonthName`)]]>
+            </SQL>
+          </NameExpression>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Item">
+      <Hierarchy visible="true" hasAll="true">
+        <Level name="Item" visible="true" column="ItemGroupID" nameColumn="ItemGroupName" parentColumn="Parent" type="Numeric" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Balance Amount YTD" column="AccumBalanceAmount" formatString="#,###.00" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Budget Amount YTD" column="AccumBudgetAmount" formatString="#,###.00" aggregator="sum" visible="true">
+    </Measure>
+    <CalculatedMember name="Balance Amount Last YTD" formatString="#,###.00" formula="sum(parallelperiod([Date].[Year],1,[Date].CurrentMember),[Measures].[Balance Amount YTD])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount DIFF Last YTD" formatString="#,###.00" formula="[Measures].[Balance Amount YTD] - [Measures].[Balance Amount Last YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount % DIFF Last YTD" formatString="Percent" formula="[Measures].[Balance Amount DIFF Last YTD] / [Measures].[Balance Amount Last YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount % YTD vs Total Asset" formatString="Percent" formula="[Measures].[Balance Amount YTD] / sum([Item].[&#3626;&#3636;&#3609;&#3607;&#3619;&#3633;&#3614;&#3618;&#3660;_10000_N/A], [Measures].[Balance Amount YTD])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount % Last YTD vs Total Asset" formatString="Percent" formula="[Measures].[Balance Amount Last YTD] / sum([Item].[&#3626;&#3636;&#3609;&#3607;&#3619;&#3633;&#3614;&#3618;&#3660;_10000_N/A], [Measures].[Balance Amount Last YTD])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount Last Month YTD" formatString="#,###.00" formula="sum(parallelperiod([Date].[Month],1,[Date].CurrentMember),[Measures].[Balance Amount YTD])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount Diff Last Month YTD" formatString="#,###.00" formula="[Measures].[Balance Amount YTD] - [Measures].[Balance Amount Last Month YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount % Diff Last Month YTD" formatString="Percent" formula="[Measures].[Balance Amount Diff Last Month YTD] / [Measures].[Balance Amount Last Month YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount Last YTD" formatString="#,###.00" formula="sum(parallelperiod([Date].[Year],1,[Date].CurrentMember),[Measures].[Budget Amount YTD])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount DIFF Last YTD" formatString="#,###.00" formula="[Measures].[Budget Amount YTD] - [Measures].[Budget Amount Last YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount % DIFF Last YTD" formatString="Percent" formula="[Measures].[Budget Amount DIFF Last YTD] / [Measures].[Budget Amount Last YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount % YTD vs Total Asset" formatString="Percent" formula="[Measures].[Budget Amount YTD] / sum([Item].[&#3626;&#3636;&#3609;&#3607;&#3619;&#3633;&#3614;&#3618;&#3660;_10000_N/A], [Measures].[Budget Amount YTD])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount % Last YTD vs Total Asset" formatString="Percent" formula="[Measures].[Budget Amount Last YTD] / sum([Item].[&#3626;&#3636;&#3609;&#3607;&#3619;&#3633;&#3614;&#3618;&#3660;_10000_N/A], [Measures].[Budget Amount Last YTD])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount Last Month YTD" formatString="#,###.00" formula="sum(parallelperiod([Date].[Month],1,[Date].CurrentMember),[Measures].[Budget Amount YTD])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount Diff Last Month YTD" formatString="#,###.00" formula="[Measures].[Budget Amount YTD] - [Measures].[Budget Amount Last Month YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount % Diff Last Month YTD" formatString="Percent" formula="[Measures].[Budget Amount Diff Last Month YTD] / [Measures].[Budget Amount Last Month YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+  </Cube>
+  <Cube name="CashFlow" visible="true" cache="true" enabled="true">
+    <Table name="CashFlow">
+    </Table>
+    <Dimension type="TimeDimension" visible="true" foreignKey="DateKey" highCardinality="false" name="Date">
+      <Hierarchy visible="true" hasAll="true" primaryKey="DateKey">
+        <Table name="DimDate">
+        </Table>
+        <Level name="Year" visible="true" column="Year" type="String" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+        <Level name="Month" visible="true" column="MonthNo" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+          <NameExpression>
+            <SQL dialect="mysql">
+              <![CDATA[CONCAT(CAST(`DimDate`.`Year` AS CHAR), ' ', `DimDate`.`MonthName`)]]>
+            </SQL>
+          </NameExpression>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Item">
+      <Hierarchy visible="true" hasAll="true">
+        <Level name="Item" visible="true" column="ItemGroupID" nameColumn="ItemGroupName" ordinalColumn="ItemGroupID" parentColumn="Parent" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="As of Amount" column="AsOfAmount" formatString="#,###.00" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Monthly Amount" column="MonthlyAmount" formatString="#,###.00" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="FixedAssetMovement" visible="true" cache="true" enabled="true">
+    <Table name="FactFixedAssetMovement">
+    </Table>
+    <Dimension type="TimeDimension" visible="true" foreignKey="DateKey" highCardinality="false" name="Date">
+      <Hierarchy visible="true" hasAll="true" primaryKey="DateKey">
+        <Table name="DimDate">
+        </Table>
+        <Level name="Year" visible="true" column="Year" type="String" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+        <Level name="Month" visible="true" column="MonthNo" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+          <NameExpression>
+            <SQL dialect="mysql">
+              <![CDATA[CONCAT(CAST(`DimDate`.`Year` AS CHAR), ' ', `DimDate`.`MonthName`)]]>
+            </SQL>
+          </NameExpression>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="FixedAssetKey" highCardinality="false" name="Fixed Asset Group 1">
+      <Hierarchy visible="true" hasAll="true" primaryKey="FixedAssetKey">
+        <Table name="DimFixedAsset">
+        </Table>
+        <Level name="Group1" visible="true" column="Group1Name" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="Group1Code" column="Group1Code" type="String">
+          </Property>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="FixedAssetKey" highCardinality="false" name="Fixed Asset Group 2">
+      <Hierarchy visible="true" hasAll="true" primaryKey="FixedAssetKey">
+        <Table name="DimFixedAsset">
+        </Table>
+        <Level name="Group2" visible="true" column="Group2Name" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="Group2Code" column="Group2Code" type="String">
+          </Property>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="FixedAssetKey" highCardinality="false" name="Fixed Asset Group 3">
+      <Hierarchy visible="true" hasAll="true" primaryKey="FixedAssetKey">
+        <Table name="DimFixedAsset">
+        </Table>
+        <Level name="Group3" visible="true" column="Group3Name" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="Group3Code" column="Group3Code" type="String">
+          </Property>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="FixedAssetKey" highCardinality="false" name="Fixed Asset">
+      <Hierarchy visible="true" hasAll="true" primaryKey="FixedAssetKey">
+        <Table name="DimFixedAsset">
+        </Table>
+        <Level name="Asset" visible="true" column="AssetName" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+          <Property name="AssetCode" column="AssetCode" type="String">
+          </Property>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <DimensionUsage source="Organization BusinessUnit" name="Organization BusinessUnit" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization LineOfBusiness" name="Organization LineOfBusiness" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization Division" name="Organization Division" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization Section" name="Organization Section" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization Area" name="Organization Area" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization Branch Name" name="Organization Branch Name" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization Revenue" name="Organization Revenue" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Organization Revenue Cate20" name="Organization Revenue Cate20" visible="true" foreignKey="OrgKey" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="CostBeginningAmount" column="CostBeginningAmount" formatString="#,###.00" aggregator="sum" caption="&#3619;&#3634;&#3588;&#3634;&#3605;&#3657;&#3609;&#3607;&#3640;&#3609;&#3605;&#3657;&#3609;&#3591;&#3623;&#3604;" visible="true">
+    </Measure>
+    <Measure name="CostIncreaseAmount" column="CostIncreaseAmount" formatString="#,###.00" aggregator="sum" caption="&#3619;&#3634;&#3588;&#3634;&#3607;&#3640;&#3609;&#3607;&#3637;&#3656;&#3648;&#3614;&#3636;&#3656;&#3617;&#3586;&#3638;&#3609;&#3657;" visible="true">
+    </Measure>
+    <Measure name="CostWriteOffAmount" column="CostWriteOffAmount" formatString="#,###.00" aggregator="sum" caption="&#3619;&#3634;&#3588;&#3634;&#3607;&#3640;&#3609;&#3592;&#3635;&#3627;&#3609;&#3656;&#3634;&#3618;" visible="true">
+    </Measure>
+    <Measure name="CostCancelAmount" column="CostCancelAmount" formatString="#,###.00" aggregator="sum" caption="&#3619;&#3634;&#3588;&#3634;&#3607;&#3640;&#3609;&#3618;&#3585;&#3648;&#3621;&#3636;&#3585;" visible="true">
+    </Measure>
+    <Measure name="CostTransferAmount" column="CostTransferAmount" formatString="#,###.00" aggregator="sum" caption="&#3619;&#3634;&#3588;&#3634;&#3607;&#3640;&#3609;&#3650;&#3629;&#3609;&#3648;&#3586;&#3657;&#3634;&#3607;&#3619;&#3633;&#3614;&#3618;&#3660;&#3626;&#3636;&#3609;" visible="true">
+    </Measure>
+    <Measure name="CostChangeAmount" column="CostChangeAmount" formatString="#,###.00" aggregator="sum" caption="&#3619;&#3634;&#3588;&#3634;&#3607;&#3640;&#3609;&#3611;&#3619;&#3633;&#3610;&#3611;&#3619;&#3640;&#3591;" visible="true">
+    </Measure>
+    <Measure name="CostEndingAmount" column="CostEndingAmount" formatString="#,###.00" aggregator="sum" caption="&#3619;&#3634;&#3588;&#3634;&#3605;&#3657;&#3609;&#3607;&#3640;&#3609;&#3611;&#3621;&#3634;&#3618;&#3591;&#3623;&#3604;" visible="true">
+    </Measure>
+    <Measure name="DepreBeginningAmount" column="DepreBeginningAmount" formatString="#,###.00" aggregator="sum" caption="&#3588;&#3656;&#3634;&#3648;&#3626;&#3639;&#3656;&#3629;&#3617;&#3619;&#3634;&#3588;&#3634;&#3626;&#3632;&#3626;&#3617;&#3605;&#3657;&#3609;&#3591;&#3623;&#3604;" visible="true">
+    </Measure>
+    <Measure name="DepreAmount" column="DepreAmount" formatString="#,###.00" aggregator="sum" caption="&#3588;&#3656;&#3634;&#3648;&#3626;&#3639;&#3656;&#3629;&#3617;&#3619;&#3634;&#3588;&#3634;" visible="true">
+    </Measure>
+    <Measure name="DepreWriteOffAmount" column="DepreWriteOffAmount" formatString="#,###.00" aggregator="sum" caption="&#3588;&#3656;&#3634;&#3648;&#3626;&#3639;&#3656;&#3629;&#3617;&#3619;&#3634;&#3588;&#3634;&#3592;&#3635;&#3627;&#3609;&#3656;&#3634;&#3618;" visible="true">
+    </Measure>
+    <Measure name="DepreCancelAmount" column="DepreCancelAmount" formatString="#,###.00" aggregator="sum" caption="&#3588;&#3656;&#3634;&#3648;&#3626;&#3639;&#3656;&#3629;&#3617;&#3619;&#3634;&#3588;&#3634;&#3618;&#3585;&#3648;&#3621;&#3636;&#3585;" visible="true">
+    </Measure>
+    <Measure name="DepreChangeAmount" column="DepreChangeAmount" formatString="#,###.00" aggregator="sum" caption="&#3588;&#3656;&#3634;&#3648;&#3626;&#3639;&#3656;&#3629;&#3617;&#3619;&#3634;&#3588;&#3634;&#3611;&#3619;&#3633;&#3610;&#3611;&#3619;&#3640;&#3591;" visible="true">
+    </Measure>
+    <Measure name="DepreEndingAmount" column="DepreEndingAmount" formatString="#,###.00" aggregator="sum" caption="&#3588;&#3656;&#3634;&#3648;&#3626;&#3639;&#3656;&#3629;&#3617;&#3619;&#3634;&#3588;&#3634;&#3626;&#3632;&#3626;&#3617;&#3611;&#3621;&#3634;&#3618;&#3591;&#3623;&#3604;" visible="true">
+    </Measure>
+    <Measure name="BookValueAmount" column="BookValueAmount" formatString="#,###.00" aggregator="sum" caption="&#3617;&#3641;&#3621;&#3588;&#3656;&#3634;&#3605;&#3634;&#3617;&#3610;&#3633;&#3597;&#3594;&#3637;" visible="true">
+    </Measure>
+  </Cube>
+  <Role name="FinAdmin">
+    <SchemaGrant access="none">
+      <CubeGrant cube="AccountBalance" access="all">
+      </CubeGrant>
+      <CubeGrant cube="ProductPrice" access="all">
+      </CubeGrant>
+      <CubeGrant cube="BalanceSheet" access="all">
+      </CubeGrant>
+      <CubeGrant cube="CashFlow" access="all">
+      </CubeGrant>
+      <CubeGrant cube="FixedAssetMovement" access="all">
+      </CubeGrant>
+    </SchemaGrant>
+  </Role>
+  <Role name="FinSubAdmin">
+    <SchemaGrant access="none">
+      <CubeGrant cube="AccountBalance" access="all">
+      </CubeGrant>
+      <CubeGrant cube="BalanceSheet" access="all">
+      </CubeGrant>
+      <CubeGrant cube="CashFlow" access="all">
+      </CubeGrant>
+      <CubeGrant cube="FixedAssetMovement" access="all">
+      </CubeGrant>
+    </SchemaGrant>
+  </Role>
+  <Role name="FinAP">
+    <SchemaGrant access="none">
+      <CubeGrant cube="AccountBalance" access="all">
+      </CubeGrant>
+    </SchemaGrant>
+  </Role>
+  <Role name="FinCost">
+    <SchemaGrant access="none">
+      <CubeGrant cube="AccountBalance" access="all">
+      </CubeGrant>
+      <CubeGrant cube="ProductPrice" access="all">
+      </CubeGrant>
+    </SchemaGrant>
+  </Role>
+  <Role name="OperAdmin">
+    <SchemaGrant access="none">
+    </SchemaGrant>
+  </Role>
+</Schema>

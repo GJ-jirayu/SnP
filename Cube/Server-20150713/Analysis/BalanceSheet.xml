@@ -1,0 +1,62 @@
+<Schema name="Balance Sheet">
+  <Cube name="Balance Sheet" cache="true" enabled="true">
+    <Table name="Temp_Balancesheet">
+    </Table>
+    <Dimension type="TimeDimension" foreignKey="DateKey" name="Date">
+      <Hierarchy hasAll="true" primaryKey="DateKey">
+        <Table name="DimDate" alias="">
+        </Table>
+        <Level name="Year" column="Year" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+        <Level name="Month" column="MonthName" ordinalColumn="MonthNo" type="String" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" name="Item">
+      <Hierarchy hasAll="true">
+        <Level name="Item" column="ItemGroupID" nameColumn="ItemGroupName" parentColumn="Parent" type="Numeric" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Balance Amount" column="BalanceAmount" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Budget Amount" column="BudgetAmount" aggregator="sum" visible="true">
+    </Measure>
+    <CalculatedMember name="Balance Amount YTD" formatString="#,###.00" formula="sum(ytd([Date].CurrentMember),[Measures].[Balance Amount])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount Last YTD" formatString="#,###.00" formula="sum(ytd(parallelperiod([Date].[Year],1,[Date].CurrentMember)),[Measures].[Balance Amount])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount DIFF Last YTD" formatString="#,###.00" formula="[Measures].[Balance Amount YTD] - [Measures].[Balance Amount Last YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount % DIFF Last YTD" formatString="Percent" formula="[Measures].[Balance Amount DIFF Last YTD] / [Measures].[Balance Amount Last YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount % YTD vs Total Asset" formatString="Percent" formula="[Measures].[Balance Amount YTD] / sum([Item].[&#3626;&#3636;&#3609;&#3607;&#3619;&#3633;&#3614;&#3618;&#3660;], [Measures].[Balance Amount YTD])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount % Last YTD vs Total Asset" formatString="Percent" formula="[Measures].[Balance Amount Last YTD] / sum([Item].[&#3626;&#3636;&#3609;&#3607;&#3619;&#3633;&#3614;&#3618;&#3660;], [Measures].[Balance Amount Last YTD])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount Last Month YTD" formatString="#,###.00" formula="sum(ytd(parallelperiod([Date].[Month],1,[Date].CurrentMember)),[Measures].[Balance Amount])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount Diff Last Month YTD" formatString="#,###.00" formula="[Measures].[Balance Amount YTD] - [Measures].[Balance Amount Last Month YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Balance Amount % Diff Last Month YTD" formatString="Percent" formula="[Measures].[Balance Amount Diff Last Month YTD] / [Measures].[Balance Amount Last Month YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount YTD" formatString="#,###.00" formula="sum(ytd([Date].CurrentMember),[Measures].[Budget Amount])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount Last YTD" formatString="#,###.00" formula="sum(ytd(parallelperiod([Date].[Year],1,[Date].CurrentMember)),[Measures].[Budget Amount])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount DIFF Last YTD" formatString="#,###.00" formula="[Measures].[Budget Amount YTD] - [Measures].[Budget Amount Last YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount % DIFF Last YTD" formatString="Percent" formula="[Measures].[Budget Amount DIFF Last YTD] / [Measures].[Budget Amount Last YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount % YTD vs Total Asset" formatString="Percent" formula="[Measures].[Budget Amount YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount % Last YTD vs Total Asset" formatString="Percent" formula="[Measures].[Budget Amount Last YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount Last Month YTD" formatString="#,###.00" formula="sum(ytd(parallelperiod([Date].[Month],1,[Date].CurrentMember)),[Measures].[Budget Amount])" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount Diff Last Month YTD" formatString="#,###.00" formula="[Measures].[Budget Amount YTD] - [Measures].[Budget Amount Last Month YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Budget Amount % Diff Last Month YTD" formatString="Percent" formula="[Measures].[Budget Amount Diff Last Month YTD] / [Measures].[Budget Amount Last Month YTD]" dimension="Measures" visible="true">
+    </CalculatedMember>
+  </Cube>
+</Schema>
