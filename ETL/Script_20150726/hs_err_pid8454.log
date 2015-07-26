@@ -1,0 +1,1435 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (exceptions.cpp:397), pid=8454, tid=139930517534464
+#  fatal error: ExceptionMark destructor expects no pending exceptions
+#
+# JRE version: 6.0_26-b03
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (20.1-b02 mixed mode linux-amd64 compressed oops)
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f441803f000):  JavaThread "SendMail_Audit - SelectJobLogSendMail" [_thread_in_vm, id=24172, stack(0x00007f441cba7000,0x00007f441cca8000)]
+
+Stack: [0x00007f441cba7000,0x00007f441cca8000],  sp=0x00007f441cca3d10,  free space=1011k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x85ebd5]
+V  [libjvm.so+0x3e413d]
+V  [libjvm.so+0x4366d1]
+V  [libjvm.so+0x372998]
+V  [libjvm.so+0x372002]
+V  [libjvm.so+0x372086]
+V  [libjvm.so+0x373a51]
+V  [libjvm.so+0x7eb85f]
+V  [libjvm.so+0x7e9845]
+V  [libjvm.so+0x7e85d1]
+V  [libjvm.so+0x7e81e4]
+V  [libjvm.so+0x56a94d]
+V  [libjvm.so+0x54e156]  JVM_FindClassFromClassLoader+0x2c6
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  java.lang.Class.forName0(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;+0
+j  java.lang.Class.forName(Ljava/lang/String;)Ljava/lang/Class;+5
+j  java.nio.charset.Charset$3.run()Ljava/lang/Object;+2
+v  ~StubRoutines::call_stub
+j  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedAction;)Ljava/lang/Object;+0
+j  java.nio.charset.Charset.probeExtendedProvider()V+7
+j  java.nio.charset.Charset.lookupExtendedCharset(Ljava/lang/String;)Ljava/nio/charset/Charset;+14
+j  java.nio.charset.Charset.lookup2(Ljava/lang/String;)Ljava/nio/charset/Charset;+48
+j  java.nio.charset.Charset.lookup(Ljava/lang/String;)Ljava/nio/charset/Charset;+40
+j  java.nio.charset.Charset.isSupported(Ljava/lang/String;)Z+1
+j  java.lang.StringCoding.lookupCharset(Ljava/lang/String;)Ljava/nio/charset/Charset;+1
+j  java.lang.StringCoding.decode(Ljava/lang/String;[BII)[C+59
+J  java.lang.String.<init>([BIILjava/lang/String;)V
+j  com.mysql.jdbc.SingleByteCharsetConverter.<init>(Ljava/lang/String;)V+33
+j  com.mysql.jdbc.SingleByteCharsetConverter.initCharset(Ljava/lang/String;)Lcom/mysql/jdbc/SingleByteCharsetConverter;+14
+j  com.mysql.jdbc.SingleByteCharsetConverter.getInstance(Ljava/lang/String;Lcom/mysql/jdbc/Connection;)Lcom/mysql/jdbc/SingleByteCharsetConverter;+18
+J  com.mysql.jdbc.ConnectionImpl.getCharsetConverter(Ljava/lang/String;)Lcom/mysql/jdbc/SingleByteCharsetConverter;
+J  com.mysql.jdbc.ResultSetRow.getString(Ljava/lang/String;Lcom/mysql/jdbc/MySQLConnection;[BII)Ljava/lang/String;
+J  com.mysql.jdbc.ResultSetImpl.extractStringFromNativeColumn(II)Ljava/lang/String;
+J  com.mysql.jdbc.ResultSetImpl.getNativeConvertToString(ILcom/mysql/jdbc/Field;)Ljava/lang/String;
+J  com.mysql.jdbc.ResultSetImpl.getStringInternal(IZ)Ljava/lang/String;
+J  org.pentaho.di.core.database.BaseDatabaseMeta.getValueFromResultSet(Ljava/sql/ResultSet;Lorg/pentaho/di/core/row/ValueMetaInterface;I)Ljava/lang/Object;
+J  org.pentaho.di.core.database.Database.getRow(Ljava/sql/ResultSet;Ljava/sql/ResultSetMetaData;Lorg/pentaho/di/core/row/RowMetaInterface;)[Ljava/lang/Object;
+J  org.pentaho.di.core.database.Database.getRow(Ljava/sql/ResultSet;)[Ljava/lang/Object;
+j  org.pentaho.di.trans.steps.tableinput.TableInput.doQuery(Lorg/pentaho/di/core/row/RowMetaInterface;[Ljava/lang/Object;)Z+303
+j  org.pentaho.di.trans.steps.tableinput.TableInput.processRow(Lorg/pentaho/di/trans/step/StepMetaInterface;Lorg/pentaho/di/trans/step/StepDataInterface;)Z+360
+j  org.pentaho.di.trans.step.RunThread.run()V+55
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f44182f2000 JavaThread "SendMail_Audit - Mail's Succuss" [_thread_blocked, id=24175, stack(0x00007f441c8a4000,0x00007f441c9a5000)]
+  0x00007f44182f7000 JavaThread "SendMail_Audit - Mail's JobFail" [_thread_blocked, id=24174, stack(0x00007f441c9a5000,0x00007f441caa6000)]
+  0x00007f44182f6800 JavaThread "SendMail_Audit - Switch / Case" [_thread_blocked, id=24173, stack(0x00007f441c7a3000,0x00007f441c8a4000)]
+=>0x00007f441803f000 JavaThread "SendMail_Audit - SelectJobLogSendMail" [_thread_in_vm, id=24172, stack(0x00007f441cba7000,0x00007f441cca8000)]
+  0x00007f44202f3800 JavaThread "Thread-5" [_thread_blocked, id=8634, stack(0x00007f441d403000,0x00007f441d504000)]
+  0x00007f4420e4f800 JavaThread "Timer-1" daemon [_thread_blocked, id=8564, stack(0x00007f441cdc7000,0x00007f441cec8000)]
+  0x00007f44202a4800 JavaThread "org.apache.commons.vfs.cache.SoftRefFilesCache$SoftRefReleaseThread" daemon [_thread_blocked, id=8495, stack(0x00007f441d1b0000,0x00007f441d2b1000)]
+  0x0000000041788000 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=8485, stack(0x00007f441df6c000,0x00007f441e06d000)]
+  0x0000000041785800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=8484, stack(0x00007f441e06d000,0x00007f441e16e000)]
+  0x0000000041782800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=8483, stack(0x00007f441e16e000,0x00007f441e26f000)]
+  0x0000000041780800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=8482, stack(0x00007f441e26f000,0x00007f441e370000)]
+  0x0000000041764000 JavaThread "Finalizer" daemon [_thread_blocked, id=8481, stack(0x00007f441e4e5000,0x00007f441e5e6000)]
+  0x000000004175d000 JavaThread "Reference Handler" daemon [_thread_blocked, id=8480, stack(0x00007f441e5e6000,0x00007f441e6e7000)]
+  0x00000000416d3000 JavaThread "main" [_thread_blocked, id=8455, stack(0x00007f442a50f000,0x00007f442a610000)]
+
+Other Threads:
+  0x0000000041756000 VMThread [stack: 0x00007f441e6e7000,0x00007f441e7e8000] [id=8479]
+  0x000000004179a800 WatcherThread [stack: 0x00007f441de6b000,0x00007f441df6c000] [id=8486]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 171712K, used 86188K [0x00000007aaab0000, 0x00000007b5b30000, 0x0000000800000000)
+  eden space 167040K, 51% used [0x00000007aaab0000,0x00000007afea3208,0x00000007b4dd0000)
+  from space 4672K, 4% used [0x00000007b56a0000,0x00000007b56d8000,0x00000007b5b30000)
+  to   space 6848K, 0% used [0x00000007b4dd0000,0x00000007b4dd0000,0x00000007b5480000)
+ PSOldGen        total 608768K, used 429160K [0x0000000700000000, 0x0000000725280000, 0x00000007aaab0000)
+  object space 608768K, 70% used [0x0000000700000000,0x000000071a31a0f8,0x0000000725280000)
+ PSPermGen       total 24960K, used 19991K [0x00000006fae00000, 0x00000006fc660000, 0x0000000700000000)
+  object space 24960K, 80% used [0x00000006fae00000,0x00000006fc185cc8,0x00000006fc660000)
+
+Code Cache  [0x00007f442677d000, 0x00007f4426a8d000, 0x00007f442977d000)
+ total_blobs=1209 nmethods=876 adapters=286 free_code_cache=47230784 largest_free_block=10688
+
+Dynamic libraries:
+40000000-40009000 r-xp 00000000 fe:00 147469                             /usr/lib/jvm/java-6-sun-1.6.0.26/jre/bin/java (deleted)
+40108000-4010a000 rwxp 00008000 fe:00 147469                             /usr/lib/jvm/java-6-sun-1.6.0.26/jre/bin/java (deleted)
+416bf000-444e9000 rwxp 00000000 00:00 0                                  [heap]
+6fae00000-6fc660000 rwxp 00000000 00:00 0 
+6fc660000-6fda10000 ---p 00000000 00:00 0 
+6fda10000-700000000 rwxp 00000000 00:00 0 
+700000000-725280000 rwxp 00000000 00:00 0 
+725280000-755560000 ---p 00000000 00:00 0 
+755560000-7aaab0000 rwxp 00000000 00:00 0 
+7aaab0000-7b5b30000 rwxp 00000000 00:00 0 
+7b5b30000-7d5550000 ---p 00000000 00:00 0 
+7d5550000-800000000 rwxp 00000000 00:00 0 
+7f4418000000-7f441857f000 rwxp 00000000 00:00 0 
+7f441857f000-7f441c000000 ---p 00000000 00:00 0 
+7f441c7a3000-7f441c7a6000 ---p 00000000 00:00 0 
+7f441c7a6000-7f441c8a4000 rwxp 00000000 00:00 0 
+7f441c8a4000-7f441c8a7000 ---p 00000000 00:00 0 
+7f441c8a7000-7f441c9a5000 rwxp 00000000 00:00 0 
+7f441c9a5000-7f441c9a8000 ---p 00000000 00:00 0 
+7f441c9a8000-7f441caa6000 rwxp 00000000 00:00 0 
+7f441caa6000-7f441caa9000 ---p 00000000 00:00 0 
+7f441caa9000-7f441cba7000 rwxp 00000000 00:00 0 
+7f441cba7000-7f441cbaa000 ---p 00000000 00:00 0 
+7f441cbaa000-7f441cca8000 rwxp 00000000 00:00 0 
+7f441cca8000-7f441ccbb000 r-xp 00000000 fe:00 274302                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/libnet.so (deleted)
+7f441ccbb000-7f441cdbc000 ---p 00013000 fe:00 274302                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/libnet.so (deleted)
+7f441cdbc000-7f441cdbf000 rwxp 00014000 fe:00 274302                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/libnet.so (deleted)
+7f441cdbf000-7f441cdc7000 r-xs 00115000 fe:00 147454                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/resources.jar (deleted)
+7f441cdc7000-7f441cdca000 ---p 00000000 00:00 0 
+7f441cdca000-7f441cec8000 rwxp 00000000 00:00 0 
+7f441d1b0000-7f441d1b3000 ---p 00000000 00:00 0 
+7f441d1b3000-7f441d2b1000 rwxp 00000000 00:00 0 
+7f441d348000-7f441d34c000 r-xs 00019000 fe:03 102370996                  /var/data-integration_v421/plugins/kettle-palo-plugin/kettle-palo-plugin.jar
+7f441d34c000-7f441d34d000 r-xs 00004000 fe:03 102370998                  /var/data-integration_v421/plugins/kettle-palo-plugin/lib/palo-core.jar
+7f441d34d000-7f441d34f000 r-xs 00010000 fe:03 102367540                  /var/data-integration_v421/plugins/kettle-gpload-plugin/kettle-gpload-plugin.jar
+7f441d34f000-7f441d351000 r-xs 0000d000 fe:03 102367526                  /var/data-integration_v421/plugins/kettle-hl7-plugin/kettle-hl7-plugin.jar
+7f441d403000-7f441d406000 ---p 00000000 00:00 0 
+7f441d406000-7f441d504000 rwxp 00000000 00:00 0 
+7f441d504000-7f441d507000 r-xs 00052000 fe:03 102367397                  /var/data-integration_v421/libext/JDBC/asjava.zip
+7f441d507000-7f441d50b000 r-xs 00040000 fe:03 102367505                  /var/data-integration_v421/libext/salesforce/SFpartner21.0.jar
+7f441d50b000-7f441d51f000 r-xs 00173000 fe:03 102367504                  /var/data-integration_v421/libext/salesforce/axis.jar
+7f441d51f000-7f441d521000 r-xs 00006000 fe:03 102367506                  /var/data-integration_v421/libext/salesforce/jaxrpc.jar
+7f441d521000-7f441d522000 r-xs 00004000 fe:03 102367503                  /var/data-integration_v421/libext/salesforce/saaj.jar
+7f441d522000-7f441d528000 r-xs 00033000 fe:03 102367281                  /var/data-integration_v421/libext/junit-4.7.jar
+7f441d528000-7f441d532000 r-xs 0006d000 fe:03 102367295                  /var/data-integration_v421/libext/jackson-mapper-asl-1.5.2.jar
+7f441d532000-7f441d539000 r-xs 00091000 fe:03 102367384                  /var/data-integration_v421/libext/jackcess-1.2.4.jar
+7f441d539000-7f441d562000 r-xs 00402000 fe:03 102367490                  /var/data-integration_v421/libext/rules/core-3.4.2.v_883_R34x.jar
+7f441d562000-7f441d575000 r-xs 00108000 fe:03 102367487                  /var/data-integration_v421/libext/rules/drools-compiler-5.0.1.jar
+7f441d575000-7f441d578000 r-xs 0001a000 fe:03 102367486                  /var/data-integration_v421/libext/rules/antlr-runtime-3.1.1.jar
+7f441d578000-7f441d59c000 r-xs 00192000 fe:03 102367488                  /var/data-integration_v421/libext/rules/drools-core-5.0.1.jar
+7f441d59c000-7f441d5a3000 r-xs 00019000 fe:03 102367485                  /var/data-integration_v421/libext/rules/drools-api-5.0.1.jar
+7f441d5a3000-7f441d5ad000 r-xs 0008b000 fe:03 102367489                  /var/data-integration_v421/libext/rules/mvel2-2.0.10.jar
+7f441d5ad000-7f441d5b3000 r-xs 00038000 fe:03 102367280                  /var/data-integration_v421/libext/snakeyaml-1.7.jar
+7f441d5b3000-7f441d5b5000 r-xs 0000e000 fe:03 102367422                  /var/data-integration_v421/libext/jakarta-oro-2.0.8.jar
+7f441d5b5000-7f441d5d0000 r-xs 004b6000 fe:03 102367260                  /var/data-integration_v421/libext/saxon9.jar
+7f441d5d0000-7f441d5e8000 r-xs 00115000 fe:03 102367380                  /var/data-integration_v421/libext/xercesImpl-2.9.1.jar
+7f441d5e8000-7f441d5ed000 r-xs 00040000 fe:03 102367276                  /var/data-integration_v421/libext/commons/commons-httpclient-3.0.1.jar
+7f441d5ed000-7f441d5ef000 r-xs 00004000 fe:03 102367270                  /var/data-integration_v421/libext/commons/commons-fileupload-1.0.jar
+7f441d5ef000-7f441d5f2000 r-xs 00018000 fe:03 102367266                  /var/data-integration_v421/libext/commons/commons-io-1.4.jar
+7f441d5f2000-7f441d5f4000 r-xs 0000a000 fe:03 102367269                  /var/data-integration_v421/libext/commons/commons-codec-1.3.jar
+7f441d5f4000-7f441d5f6000 r-xs 0000e000 fe:03 102367278                  /var/data-integration_v421/libext/commons/commons-pool-1.3.jar
+7f441d5f6000-7f441d5fa000 r-xs 00020000 fe:03 102367265                  /var/data-integration_v421/libext/commons/commons-digester-1.8.jar
+7f441d5fa000-7f441d5fd000 r-xs 00018000 fe:03 102367277                  /var/data-integration_v421/libext/commons/commons-dbcp-1.2.1.jar
+7f441d5fd000-7f441d60a000 r-xs 0007c000 fe:03 102367275                  /var/data-integration_v421/libext/commons/commons-collections-3.1.jar
+7f441d60a000-7f441d60b000 r-xs 0000c000 fe:03 102367272                  /var/data-integration_v421/libext/commons/commons-logging-1.1.jar
+7f441d60b000-7f441d610000 r-xs 00026000 fe:03 102367271                  /var/data-integration_v421/libext/commons/commons-math-1.1.jar
+7f441d610000-7f441d615000 r-xs 00028000 fe:03 102367273                  /var/data-integration_v421/libext/commons/commons-net-1.4.1.jar
+7f441d615000-7f441d618000 r-xs 0001f000 fe:03 102367279                  /var/data-integration_v421/libext/commons/commons-validator-1.3.1.jar
+7f441d618000-7f441d61c000 r-xs 0003c000 fe:03 102367267                  /var/data-integration_v421/libext/commons/commons-lang-2.4.jar
+7f441d61c000-7f441d621000 r-xs 00034000 fe:03 102367274                  /var/data-integration_v421/libext/commons/commons-beanutils-1.8.0.jar
+7f441d621000-7f441d624000 r-xs 00010000 fe:03 102367268                  /var/data-integration_v421/libext/commons/commons-discovery-0.4.jar
+7f441d624000-7f441d625000 r-xs 00003000 fe:03 102367284                  /var/data-integration_v421/libext/livetribe-jsr223-2.0.6.jar
+7f441d625000-7f441d653000 r-xs 0031e000 fe:03 102367463                  /var/data-integration_v421/libext/pentaho/hadoop-core-0.20.2-cdh3u0.jar
+7f441d653000-7f441d671000 r-xs 00206000 fe:03 102367452                  /var/data-integration_v421/libext/pentaho/hbase-0.90.1.jar
+7f441d671000-7f441d673000 r-xs 00001000 fe:03 102367456                  /var/data-integration_v421/libext/pentaho/sqleonardo-swt-wrapper.jar
+7f441d673000-7f441d67d000 r-xs 00089000 fe:03 102367449                  /var/data-integration_v421/libext/pentaho/zookeeper-3.3.2.jar
+7f441d67d000-7f441d67f000 r-xs 0000e000 fe:03 102367455                  /var/data-integration_v421/libext/pentaho/pentaho-vfs-browser-2.0.3.jar
+7f441d67f000-7f441d680000 r-xs 00002000 fe:03 102367450                  /var/data-integration_v421/libext/pentaho/pentaho-s3-vfs-1.0.1.jar
+7f441d680000-7f441d683000 r-xs 0001d000 fe:03 102367464                  /var/data-integration_v421/libext/pentaho/libbase-1.2.2.jar
+7f441d683000-7f441d68f000 r-xs 00086000 fe:03 102367462                  /var/data-integration_v421/libext/pentaho/sqleonardo.jar
+7f441d68f000-7f441d690000 r-xs 00001000 fe:03 102367451                  /var/data-integration_v421/libext/pentaho/pentaho-hdfs-vfs-1.0.0.jar
+7f441d690000-7f441d696000 r-xs 00026000 fe:03 102367454                  /var/data-integration_v421/libext/pentaho/pentaho-xul-core-3.3.2.jar
+7f441d696000-7f441d697000 r-xs 0000b000 fe:03 102367447                  /var/data-integration_v421/libext/pentaho/pentaho-formula-editor-0.0.1.jar
+7f441d697000-7f441d69d000 r-xs 00060000 fe:03 102367453                  /var/data-integration_v421/libext/pentaho/jets3t-0.7.4.jar
+7f441d69d000-7f441d6a3000 r-xs 0003a000 fe:03 102367465                  /var/data-integration_v421/libext/pentaho/pentaho-xul-swt-3.3.2.jar
+7f441d6a3000-7f441d6ac000 r-xs 00046000 fe:03 102367448                  /var/data-integration_v421/libext/pentaho/kettle-vfs-20100924.jar
+7f441d6ac000-7f441d701000 r-xs 00384000 fe:03 102367262                  /var/data-integration_v421/libext/odfdom.jar
+7f441d701000-7f441d70d000 r-xs 000a6000 fe:03 102367514                  /var/data-integration_v421/libext/jxl.jar
+7f441d70d000-7f441d70e000 r-xs 0000b000 fe:03 102367495                  /var/data-integration_v421/libext/jzlib-1.0.7.jar
+7f441d70e000-7f441d714000 r-xs 00032000 fe:03 102367469                  /var/data-integration_v421/libext/jaxen-1.1.1.jar
+7f441d714000-7f441d716000 r-xs 00003000 fe:03 102367259                  /var/data-integration_v421/libext/scannotation-1.0.2.jar
+7f441d716000-7f441d718000 r-xs 00008000 fe:03 102367466                  /var/data-integration_v421/libext/jug-lgpl-2.0.0.jar
+7f441d718000-7f441d71a000 r-xs 0001e000 fe:03 102367252                  /var/data-integration_v421/libext/saxon9-dom.jar
+7f441d71a000-7f441d720000 r-xs 0005a000 fe:03 102367501                  /var/data-integration_v421/libext/jcifs-1.3.3.jar
+7f441d720000-7f441d722000 r-xs 00002000 fe:03 102367442                  /var/data-integration_v421/libext/mondrian/eigenbase-properties-1.1.0.10924.jar
+7f441d722000-7f441d74e000 r-xs 002b8000 fe:03 102367441                  /var/data-integration_v421/libext/mondrian/mondrian-3.3.0.14703.jar
+7f441d74e000-7f441d754000 r-xs 00040000 fe:03 102367438                  /var/data-integration_v421/libext/mondrian/olap4j-1.0.0.445.jar
+7f441d754000-7f441d757000 r-xs 00038000 fe:03 102367444                  /var/data-integration_v421/libext/mondrian/javacup-10k.jar
+7f441d757000-7f441d759000 r-xs 00015000 fe:03 102367443                  /var/data-integration_v421/libext/mondrian/eigenbase-xom-1.3.0.13768.jar
+7f441d759000-7f441d75b000 r-xs 0000d000 fe:03 102367436                  /var/data-integration_v421/libext/mondrian/eigenbase-resgen-1.3.0.13768.jar
+7f441d75b000-7f441d75f000 r-xs 0002b000 fe:03 102367434                  /var/data-integration_v421/libext/mondrian/olap4j-xmla-1.0.0.445.jar
+7f441d75f000-7f441d763000 r-xs 00045000 fe:03 102367435                  /var/data-integration_v421/libext/mondrian/javacc.jar
+7f441d763000-7f441d764000 r-xs 0000d000 fe:03 102367437                  /var/data-integration_v421/libext/mondrian/saxon9-xom.jar
+7f441d764000-7f441d769000 r-xs 00048000 fe:03 102367283                  /var/data-integration_v421/libext/dom4j-1.6.1.jar
+7f441d769000-7f441d76f000 r-xs 0006d000 fe:03 102367500                  /var/data-integration_v421/libext/javassist.jar
+7f441d76f000-7f441d779000 r-xs 00066000 fe:03 102367499                  /var/data-integration_v421/libext/jersey/jersey-core-1.7.jar
+7f441d779000-7f441d77d000 r-xs 0001c000 fe:03 102367498                  /var/data-integration_v421/libext/jersey/jersey-client-1.7.jar
+7f441d77d000-7f441d77f000 r-xs 00004000 fe:03 102367497                  /var/data-integration_v421/libext/jersey/jersey-apache-client-1.7.jar
+7f441d77f000-7f441d783000 r-xs 00038000 fe:03 102367468                  /var/data-integration_v421/libext/mongo-2.5.3.jar
+7f441d783000-7f441d87b000 r-xs 00a49000 fe:03 102367478                  /var/data-integration_v421/libext/elasticsearch/elasticsearch-0.16.3.jar
+7f441d87b000-7f441d884000 r-xs 00071000 fe:03 102367483                  /var/data-integration_v421/libext/elasticsearch/lucene-analyzers-3.1.0.jar
+7f441d884000-7f441d886000 r-xs 0000a000 fe:03 102367480                  /var/data-integration_v421/libext/elasticsearch/lucene-queries-3.1.0.jar
+7f441d886000-7f441d888000 r-xs 00012000 fe:03 102367482                  /var/data-integration_v421/libext/elasticsearch/lucene-highlighter-3.1.0.jar
+7f441d888000-7f441d89d000 r-xs 00110000 fe:03 102367481                  /var/data-integration_v421/libext/elasticsearch/lucene-core-3.1.0.jar
+7f441d89d000-7f441d89f000 r-xs 00006000 fe:03 102367479                  /var/data-integration_v421/libext/elasticsearch/lucene-memory-3.1.0.jar
+7f441d89f000-7f441d8a0000 r-xs 00001000 fe:03 102367492                  /var/data-integration_v421/libext/slf4j-jcl-1.5.8.jar
+7f441d8a0000-7f441d8a7000 r-xs 00059000 fe:03 102367293                  /var/data-integration_v421/libext/log4j-1.2.14.jar
+7f441d8a7000-7f441d8ac000 r-xs 0003c000 fe:03 102367286                  /var/data-integration_v421/libext/ldapjdk.jar
+7f441d8ac000-7f441d8b6000 r-xs 0008d000 fe:03 102367282                  /var/data-integration_v421/libext/janino.jar
+7f441d8b6000-7f441d8ba000 r-xs 00032000 fe:03 102367420                  /var/data-integration_v421/libext/feeds/rome-1.0.jar
+7f441d8ba000-7f441d8bb000 r-xs 0000b000 fe:03 102367417                  /var/data-integration_v421/libext/feeds/feed4j.jar
+7f441d8bb000-7f441d8be000 r-xs 00023000 fe:03 102367418                  /var/data-integration_v421/libext/feeds/jdom.jar
+7f441d8be000-7f441d8c6000 r-xs 00028000 fe:03 102367416                  /var/data-integration_v421/libext/feeds/xml-apis.jar
+7f441d8c6000-7f441d8c8000 r-xs 00018000 fe:03 102367419                  /var/data-integration_v421/libext/feeds/nekohtml.jar
+7f441d8c8000-7f441d8ca000 r-xs 00004000 fe:03 102367421                  /var/data-integration_v421/libext/feeds/georss-rome-0.9.8.jar
+7f441d8ca000-7f441d8cf000 r-xs 00309000 fe:03 102367410                  /var/data-integration_v421/libext/JDBC/sqlite-jdbc-3.7.2.jar
+7f441d8cf000-7f441d8d8000 r-xs 0010c000 fe:03 102367386                  /var/data-integration_v421/libext/JDBC/h2.jar
+7f441d8d8000-7f441d8dd000 r-xs 0006e000 fe:03 102367391                  /var/data-integration_v421/libext/JDBC/derbyclient.jar
+7f441d8dd000-7f441d8e1000 r-xs 00045000 fe:03 102367407                  /var/data-integration_v421/libext/JDBC/iijdbc.jar
+7f441d8e1000-7f441d8e5000 r-xs 0002e000 fe:03 102367388                  /var/data-integration_v421/libext/JDBC/interclient.jar
+7f441d8e5000-7f441d8e8000 r-xs 00012000 fe:03 102367396                  /var/data-integration_v421/libext/JDBC/infobright-core-3.4.jar
+7f441d8e8000-7f441d8e9000 r-xs 00000000 fe:03 102367409                  /var/data-integration_v421/libext/JDBC/db2jcc_license_cu.jar
+7f441d8e9000-7f441d8f0000 r-xs 00095000 fe:03 102367392                  /var/data-integration_v421/libext/JDBC/hsqldb.jar
+7f441d8f0000-7f441d8f1000 r-xs 0000e000 fe:03 102367411                  /var/data-integration_v421/libext/JDBC/hive-jdbc-0.7.0-pentaho-1.0.0.jar
+7f441d8f1000-7f441d8f4000 r-xs 00047000 fe:03 102367394                  /var/data-integration_v421/libext/JDBC/jtds-1.2.5.jar
+7f441d8f4000-7f441d8fa000 r-xs 00075000 fe:03 102367395                  /var/data-integration_v421/libext/JDBC/postgresql-8.4-702.jdbc3.jar
+7f441d8fa000-7f441d901000 r-xs 0005c000 fe:03 102367400                  /var/data-integration_v421/libext/JDBC/sapdbc.jar
+7f441d901000-7f441d903000 r-xs 000e3000 fe:03 102367405                  /var/data-integration_v421/libext/JDBC/rdbthin.jar
+7f441d903000-7f441d909000 r-xs 0003e000 fe:03 102367412                  /var/data-integration_v421/libext/JDBC/LucidDbClient-minimal.jar
+7f441d909000-7f441d916000 r-xs 000fa000 fe:03 102367389                  /var/data-integration_v421/libext/JDBC/db2jcc.jar
+7f441d916000-7f441d91d000 r-xs 000ba000 fe:03 102367403                  /var/data-integration_v421/libext/JDBC/mysql-connector-java-5.1.17.jar
+7f441d91d000-7f441d922000 r-xs 000a2000 fe:03 102367402                  /var/data-integration_v421/libext/JDBC/ifxjdbc.jar
+7f441d922000-7f441d929000 r-xs 0018b000 fe:03 102367404                  /var/data-integration_v421/libext/JDBC/orai18n.jar
+7f441d929000-7f441d92d000 r-xs 00033000 fe:03 102367390                  /var/data-integration_v421/libext/JDBC/kingbasejdbc.jar
+7f441d92d000-7f441d94f000 r-xs 0020a000 fe:03 102367406                  /var/data-integration_v421/libext/JDBC/derby.jar
+7f441d94f000-7f441d980000 r-xs 003eb000 fe:03 102367393                  /var/data-integration_v421/libext/JDBC/jt400.jar
+7f441d980000-7f441d98a000 r-xs 00096000 fe:03 102367387                  /var/data-integration_v421/libext/JDBC/jaybird-full-2.1.0.jar
+7f441d98a000-7f441d98c000 r-xs 00015000 fe:03 102367408                  /var/data-integration_v421/libext/JDBC/xdbjdbc.jar
+7f441d98c000-7f441d98f000 r-xs 00025000 fe:03 102367401                  /var/data-integration_v421/libext/JDBC/unijdbc.jar
+7f441d98f000-7f441d99f000 r-xs 00169000 fe:03 102367399                  /var/data-integration_v421/libext/JDBC/ojdbc14.jar
+7f441d99f000-7f441d9a2000 r-xs 0001f000 fe:03 102367398                  /var/data-integration_v421/libext/JDBC/monetdb-1.7-jdbc.jar
+7f441d9a2000-7f441d9a9000 r-xs 00073000 fe:03 102367257                  /var/data-integration_v421/libext/poi/poi-ooxml-3.7-20101029.jar
+7f441d9a9000-7f441d9c6000 r-xs 0017c000 fe:03 102367255                  /var/data-integration_v421/libext/poi/poi-3.7-20101029.jar
+7f441d9c6000-7f441da03000 r-xs 0024f000 fe:03 102367254                  /var/data-integration_v421/libext/poi/xmlbeans-2.3.0.jar
+7f441da03000-7f441da82000 r-xs 0034a000 fe:03 102367256                  /var/data-integration_v421/libext/poi/poi-ooxml-schemas-3.7-20101029.jar
+7f441da82000-7f441da84000 r-xs 00005000 fe:03 102367258                  /var/data-integration_v421/libext/poi/geronimo-stax-api_1.0_spec-1.0.jar
+7f441da84000-7f441da8a000 r-xs 00046000 fe:03 102367383                  /var/data-integration_v421/libext/jfree/jcommon-1.0.14.jar
+7f441da8a000-7f441da99000 r-xs 0012d000 fe:03 102367382                  /var/data-integration_v421/libext/jfree/jfreechart-1.0.9.jar
+7f441da99000-7f441da9d000 r-xs 00028000 fe:03 102367414                  /var/data-integration_v421/libext/secondstring.jar
+7f441da9d000-7f441daa2000 r-xs 0002b000 fe:03 102367494                  /var/data-integration_v421/libext/syslog4j-0.9.34.jar
+7f441daa2000-7f441daab000 r-xs 000cc000 fe:03 102367285                  /var/data-integration_v421/libext/js.jar
+7f441daab000-7f441dab1000 r-xs 00040000 fe:03 102367508                  /var/data-integration_v421/libext/spring/spring-core-2.5.6.jar
+7f441dab1000-7f441dabd000 r-xs 00069000 fe:03 102367509                  /var/data-integration_v421/libext/spring/spring-context-2.5.6.jar
+7f441dabd000-7f441dac7000 r-xs 0006e000 fe:03 102367511                  /var/data-integration_v421/libext/spring/spring-beans-2.5.6.jar
+7f441dac7000-7f441daca000 r-xs 00015000 fe:03 102367510                  /var/data-integration_v421/libext/spring/spring-context-support-2.5.6.jar
+7f441daca000-7f441dacb000 r-xs 00008000 fe:03 102367263                  /var/data-integration_v421/libext/ascsapjco3wrp.jar
+7f441dacb000-7f441dad1000 r-xs 00055000 fe:03 102367432                  /var/data-integration_v421/libext/SNMP4J.jar
+7f441dad1000-7f441dad3000 r-xs 00016000 fe:03 102367294                  /var/data-integration_v421/libext/ini4j-0.5.1.jar
+7f441dad3000-7f441dad4000 r-xs 00003000 fe:03 102367379                  /var/data-integration_v421/libext/json_simple-1.1.jar
+7f441dad4000-7f441dae2000 r-xs 000ee000 fe:03 102367472                  /var/data-integration_v421/libext/webservices/xalan-2.4.1.jar
+7f441dae2000-7f441dae3000 r-xs 00000000 fe:03 102367475                  /var/data-integration_v421/libext/webservices/qname.jar
+7f441dae3000-7f441dae9000 r-xs 0007a000 fe:03 102367471                  /var/data-integration_v421/libext/webservices/wstx-asl-3.2.9.jar
+7f441dae9000-7f441daee000 r-xs 00020000 fe:03 102367473                  /var/data-integration_v421/libext/webservices/wsdl4j.jar
+7f441daee000-7f441daf0000 r-xs 00005000 fe:03 102367474                  /var/data-integration_v421/libext/webservices/jsr173_api.jar
+7f441daf0000-7f441daf1000 r-xs 00003000 fe:03 102367491                  /var/data-integration_v421/libext/javadbf.jar
+7f441daf1000-7f441daf5000 r-xs 0003a000 fe:03 102367512                  /var/data-integration_v421/libext/trilead-ssh2-build213.jar
+7f441daf5000-7f441daf6000 r-xs 00005000 fe:03 102367445                  /var/data-integration_v421/libext/slf4j-api-1.5.8.jar
+7f441daf6000-7f441daf8000 r-xs 00001000 fe:03 102367513                  /var/data-integration_v421/libext/jsonpath.jar
+7f441daf8000-7f441dafe000 r-xs 0003b000 fe:03 102367378                  /var/data-integration_v421/libext/hive/libthrift-0.5.0.jar
+7f441dafe000-7f441db01000 r-xs 00028000 fe:03 102367377                  /var/data-integration_v421/libext/hive/libfb303-0.5.0.jar
+7f441db01000-7f441db04000 r-xs 00024000 fe:03 102367375                  /var/data-integration_v421/libext/hive/hive-service-0.7.0-pentaho-1.0.0.jar
+7f441db04000-7f441db32000 r-xs 00298000 fe:03 102367374                  /var/data-integration_v421/libext/hive/hive-exec-0.7.0-pentaho-1.0.0.jar
+7f441db32000-7f441db43000 r-xs 00166000 fe:03 102367376                  /var/data-integration_v421/libext/hive/hive-metastore-0.7.0-pentaho-1.0.0.jar
+7f441db43000-7f441db46000 r-xs 00028000 fe:03 102367413                  /var/data-integration_v421/libext/edtftpj2.1.jar
+7f441db46000-7f441db4d000 r-xs 00051000 fe:03 102367476                  /var/data-integration_v421/libext/mail.jar
+7f441db4d000-7f441db59000 r-xs 0007a000 fe:03 102367429                  /var/data-integration_v421/libext/google/google-collect-1.0-rc1.jar
+7f441db59000-7f441db5c000 r-xs 00006000 fe:03 102367426                  /var/data-integration_v421/libext/google/jsr305.jar
+7f441db5c000-7f441db5d000 r-xs 00000000 fe:03 102367428                  /var/data-integration_v421/libext/google/gdata-analytics-meta-2.1.jar
+7f441db5d000-7f441db5e000 r-xs 00000000 fe:03 102367424                  /var/data-integration_v421/libext/google/gdata-client-meta-1.0.jar
+7f441db5e000-7f441db62000 r-xs 0001c000 fe:03 102367425                  /var/data-integration_v421/libext/google/gdata-client-1.0.jar
+7f441db62000-7f441db65000 r-xs 00014000 fe:03 102367427                  /var/data-integration_v421/libext/google/gdata-analytics-2.1.jar
+7f441db65000-7f441db78000 r-xs 000ea000 fe:03 102367430                  /var/data-integration_v421/libext/google/gdata-core-1.0.jar
+7f441db78000-7f441db83000 r-xs 000b3000 fe:03 102367343                  /var/data-integration_v421/libext/reporting/axis2-adb-1.4.1.jar
+7f441db83000-7f441db86000 r-xs 0000b000 fe:03 102367368                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-extensions-toc-3.8.3-GA.jar
+7f441db86000-7f441db88000 r-xs 00004000 fe:03 102367313                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-extensions-scripting-3.8.3-GA.jar
+7f441db88000-7f441db8d000 r-xs 0001b000 fe:03 102367367                  /var/data-integration_v421/libext/reporting/libloader-1.2.2.jar
+7f441db8d000-7f441db8f000 r-xs 00003000 fe:03 102367361                  /var/data-integration_v421/libext/reporting/asm-attrs-1.5.3.jar
+7f441db8f000-7f441db92000 r-xs 00028000 fe:03 102367330                  /var/data-integration_v421/libext/reporting/mof-200507110943.jar
+7f441db92000-7f441db94000 r-xs 00004000 fe:03 102367329                  /var/data-integration_v421/libext/reporting/libserializer-1.2.2.jar
+7f441db94000-7f441dba3000 r-xs 00074000 fe:03 102367338                  /var/data-integration_v421/libext/reporting/joda-time-1.6.jar
+7f441dba3000-7f441dba7000 r-xs 00071000 fe:03 102367308                  /var/data-integration_v421/libext/reporting/jmiutils-200507110943.jar
+7f441dba7000-7f441dbab000 r-xs 0001a000 fe:03 102367303                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-extensions-3.8.3-GA.jar
+7f441dbab000-7f441dbaf000 r-xs 0002b000 fe:03 102367319                  /var/data-integration_v421/libext/reporting/bcmail-jdk14-138.jar
+7f441dbaf000-7f441dbba000 r-xs 0005f000 fe:03 102367304                  /var/data-integration_v421/libext/reporting/xstream-1.3.1.jar
+7f441dbba000-7f441dbbc000 r-xs 00007000 fe:03 102367356                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-extensions-kettle-3.8.3-GA.jar
+7f441dbbc000-7f441dbbd000 r-xs 00000000 fe:03 102367300                  /var/data-integration_v421/libext/reporting/wsdl4j-qname-1.6.1.jar
+7f441dbbd000-7f441dbbf000 r-xs 00004000 fe:03 102367359                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-extensions-xpath-3.8.3-GA.jar
+7f441dbbf000-7f441dbc1000 r-xs 00021000 fe:03 102367332                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-extensions-sampledata-3.8.3-GA.jar
+7f441dbc1000-7f441dbcd000 r-xs 0005d000 fe:03 102367355                  /var/data-integration_v421/libext/reporting/batik-svg-dom-1.6.jar
+7f441dbcd000-7f441dbcf000 r-xs 00007000 fe:03 102367312                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-extensions-drill-down-3.8.3-GA.jar
+7f441dbcf000-7f441dbd4000 r-xs 0000e000 fe:03 102367345                  /var/data-integration_v421/libext/reporting/batik-ext-1.6.jar
+7f441dbd4000-7f441dbde000 r-xs 00070000 fe:03 102367325                  /var/data-integration_v421/libext/reporting/ehcache-core-2.0.1.jar
+7f441dbde000-7f441dbe3000 r-xs 00017000 fe:03 102367366                  /var/data-integration_v421/libext/reporting/jlfgr-1.0.jar
+7f441dbe3000-7f441dbea000 r-xs 00049000 fe:03 102367348                  /var/data-integration_v421/libext/reporting/cglib-nodep-2.1_3.jar
+7f441dbea000-7f441dbed000 r-xs 0001d000 fe:03 102367362                  /var/data-integration_v421/libext/reporting/libbase-1.2.2.jar
+7f441dbed000-7f441dbf0000 r-xs 00007000 fe:03 102367322                  /var/data-integration_v421/libext/reporting/batik-script-1.6.jar
+7f441dbf0000-7f441dbf3000 r-xs 00010000 fe:03 102367328                  /var/data-integration_v421/libext/reporting/libformula-ui-1.2.3.jar
+7f441dbf3000-7f441dbfc000 r-xs 00052000 fe:03 102367354                  /var/data-integration_v421/libext/reporting/batik-awt-util-1.6.jar
+7f441dbfc000-7f441dbfd000 r-xs 00004000 fe:03 102367344                  /var/data-integration_v421/libext/reporting/jmi-200507110943.jar
+7f441dbfd000-7f441dc1f000 r-xs 0020a000 fe:03 102367327                  /var/data-integration_v421/libext/reporting/hibernate-3.2.6.ga.jar
+7f441dc1f000-7f441dc22000 r-xs 00011000 fe:03 102367317                  /var/data-integration_v421/libext/reporting/libxml-1.2.2.jar
+7f441dc22000-7f441dc32000 r-xs 0012c000 fe:03 102367324                  /var/data-integration_v421/libext/reporting/axis2-kernel-1.4.1.jar
+7f441dc32000-7f441dc53000 r-xs 0015a000 fe:03 102367334                  /var/data-integration_v421/libext/reporting/bcprov-jdk14-138.jar
+7f441dc53000-7f441dc56000 r-xs 0000d000 fe:03 102367307                  /var/data-integration_v421/libext/reporting/avalon-framework-4.1.3.jar
+7f441dc56000-7f441dc5b000 r-xs 0000c000 fe:03 102367337                  /var/data-integration_v421/libext/reporting/libformat-1.2.4.jar
+7f441dc5b000-7f441dc5c000 r-xs 00002000 fe:03 102367336                  /var/data-integration_v421/libext/reporting/libsparkline-1.2.1.jar
+7f441dc5c000-7f441dc83000 r-xs 00291000 fe:03 102367310                  /var/data-integration_v421/libext/reporting/groovy-all-1.5.6.jar
+7f441dc83000-7f441dc8f000 r-xs 00108000 fe:03 102367306                  /var/data-integration_v421/libext/reporting/itext-2.1.7.jar
+7f441dc8f000-7f441dc9e000 r-xs 00060000 fe:03 102367370                  /var/data-integration_v421/libext/reporting/libformula-1.2.3.jar
+7f441dc9e000-7f441dca1000 r-xs 00013000 fe:03 102367318                  /var/data-integration_v421/libext/reporting/batik-dom-1.6.jar
+7f441dca1000-7f441dca9000 r-xs 00033000 fe:03 102367360                  /var/data-integration_v421/libext/reporting/batik-css-1.6.jar
+7f441dca9000-7f441dcae000 r-xs 0001a000 fe:03 102367346                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-extensions-mondrian-3.8.3-GA.jar
+7f441dcae000-7f441dcb2000 r-xs 00023000 fe:03 102367331                  /var/data-integration_v421/libext/reporting/itext-rtf-2.1.7.jar
+7f441dcb2000-7f441dcb5000 r-xs 00010000 fe:03 102367314                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-wizard-core-3.8.3-GA.jar
+7f441dcb5000-7f441dcb8000 r-xs 00014000 fe:03 102367340                  /var/data-integration_v421/libext/reporting/barbecue-1.5-beta1.jar
+7f441dcb8000-7f441dcbd000 r-xs 00037000 fe:03 102367315                  /var/data-integration_v421/libext/reporting/bsh-1.3.0.jar
+7f441dcbd000-7f441dcc0000 r-xs 0000c000 fe:03 102367320                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-extensions-pmd-3.8.3-GA.jar
+7f441dcc0000-7f441dcc2000 r-xs 00008000 fe:03 102367371                  /var/data-integration_v421/libext/reporting/batik-parser-1.6.jar
+7f441dcc2000-7f441dcc8000 r-xs 00067000 fe:03 102367309                  /var/data-integration_v421/libext/reporting/antlr-2.7.6.jar
+7f441dcc8000-7f441dccd000 r-xs 00020000 fe:03 102367353                  /var/data-integration_v421/libext/reporting/libswing-1.2.4.jar
+7f441dccd000-7f441dccf000 r-xs 00006000 fe:03 102367301                  /var/data-integration_v421/libext/reporting/mdrapi-200507110943.jar
+7f441dccf000-7f441dcd8000 r-xs 0008f000 fe:03 102367352                  /var/data-integration_v421/libext/reporting/nbmdr-200507110943-custom.jar
+7f441dcd8000-7f441dce0000 r-xs 00034000 fe:03 102367347                  /var/data-integration_v421/libext/reporting/libfonts-1.2.3.jar
+7f441dce0000-7f441dce3000 r-xs 00012000 fe:03 102367311                  /var/data-integration_v421/libext/reporting/libdocbundle-1.2.3.jar
+7f441dce3000-7f441dce5000 r-xs 00005000 fe:03 102367335                  /var/data-integration_v421/libext/reporting/xpp3_min-1.1.4c.jar
+7f441dce5000-7f441dce7000 r-xs 00012000 fe:03 102367365                  /var/data-integration_v421/libext/reporting/batik-util-1.6.jar
+7f441dce7000-7f441dce9000 r-xs 0000e000 fe:03 102367333                  /var/data-integration_v421/libext/reporting/oro-2.0.8.jar
+7f441dce9000-7f441dceb000 r-xs 0000e000 fe:03 102367305                  /var/data-integration_v421/libext/reporting/librepository-1.2.3.jar
+7f441dceb000-7f441dcef000 r-xs 00016000 fe:03 102367372                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-extensions-olap4j-3.8.3-GA.jar
+7f441dcef000-7f441dcf2000 r-xs 00019000 fe:03 102367357                  /var/data-integration_v421/libext/reporting/bsf-2.4.0.jar
+7f441dcf2000-7f441dcfd000 r-xs 000ad000 fe:03 102367339                  /var/data-integration_v421/libext/reporting/pentaho-metadata-3.4.3.jar
+7f441dcfd000-7f441dcff000 r-xs 00004000 fe:03 102367369                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-extensions-hibernate-3.8.3-GA.jar
+7f441dcff000-7f441dd01000 r-xs 00001000 fe:03 102367351                  /var/data-integration_v421/libext/reporting/jta-1.0.1B.jar
+7f441dd01000-7f441dd02000 r-xs 00004000 fe:03 102367341                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-legacy-functions-3.8.3-GA.jar
+7f441dd02000-7f441dd03000 r-xs 00004000 fe:03 102367350                  /var/data-integration_v421/libext/reporting/batik-xml-1.6.jar
+7f441dd03000-7f441dd08000 r-xs 00018000 fe:03 102367326                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-extensions-reportdesigner-parser-3.8.3-GA.jar
+7f441dd08000-7f441dd61000 r-xs 0033b000 fe:03 102367321                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-classic-core-3.8.3-GA.jar
+7f441dd61000-7f441dd67000 r-xs 0001c000 fe:03 102367358                  /var/data-integration_v421/libext/reporting/batik-gui-util-1.6.jar
+7f441dd67000-7f441dd68000 r-xs 00006000 fe:03 102367349                  /var/data-integration_v421/libext/reporting/asm-1.5.3.jar
+7f441dd68000-7f441dd81000 r-xs 000a9000 fe:03 102367316                  /var/data-integration_v421/libext/reporting/pentaho-cwm-1.5.4.jar
+7f441dd81000-7f441dd83000 r-xs 0000c000 fe:03 102367299                  /var/data-integration_v421/libext/reporting/jettison-1.0.1.jar
+7f441dd83000-7f441dd89000 r-xs 0003e000 fe:03 102367363                  /var/data-integration_v421/libext/reporting/batik-bridge-1.6.jar
+7f441dd89000-7f441dd8d000 r-xs 00026000 fe:03 102367364                  /var/data-integration_v421/libext/reporting/batik-gvt-1.6.jar
+7f441dd8d000-7f441dd8f000 r-xs 00009000 fe:03 102367302                  /var/data-integration_v421/libext/reporting/pentaho-connections-2.2.3.jar
+7f441dd8f000-7f441dd96000 r-xs 00048000 fe:03 102367342                  /var/data-integration_v421/libext/reporting/pentaho-reporting-engine-legacy-charts-3.8.3-GA.jar
+7f441dd96000-7f441dd9c000 r-xs 00070000 fe:03 102367323                  /var/data-integration_v421/libext/reporting/openide-util-200507110943.jar
+7f441dd9c000-7f441dda0000 r-xs 00027000 fe:03 102367298                  /var/data-integration_v421/libext/reporting/libpixie-1.2.2.jar
+7f441dda0000-7f441ddde000 r-xs 0025b000 fe:03 102367431                  /var/data-integration_v421/libext/xbean.jar
+7f441ddde000-7f441dde1000 r-xs 0002b000 fe:03 102367261                  /var/data-integration_v421/libext/jsch-0.1.44.jar
+7f441dde1000-7f441dde3000 r-xs 0000d000 fe:03 102367291                  /var/data-integration_v421/libext/web/jetty-plus-6.1.21.jar
+7f441dde3000-7f441dde5000 r-xs 00009000 fe:03 102367290                  /var/data-integration_v421/libext/web/simple-jndi-0.11.1.jar
+7f441dde5000-7f441dde8000 r-xs 0001e000 fe:03 102367288                  /var/data-integration_v421/libext/web/servlet-api-2.5-6.1.9.jar
+7f441dde8000-7f441ddeb000 r-xs 00028000 fe:03 102367289                  /var/data-integration_v421/libext/web/jetty-util-6.1.21.jar
+7f441ddeb000-7f441ddf2000 r-xs 0007c000 fe:03 102367292                  /var/data-integration_v421/libext/web/jetty-6.1.21.jar
+7f441ddf2000-7f441ddf4000 r-xs 00015000 fe:03 102367296                  /var/data-integration_v421/libext/ftp4che-0.7.1.jar
+7f441ddf4000-7f441ddf8000 r-xs 00026000 fe:03 102367493                  /var/data-integration_v421/libext/ognl-2.6.9.jar
+7f441ddf8000-7f441ddfb000 r-xs 00027000 fe:03 102367467                  /var/data-integration_v421/libext/jackson-core-asl-1.5.2.jar
+7f441ddfb000-7f441de60000 r-xs 00640000 fe:03 102371290                  /var/data-integration_v421/lib/kettle-engine.jar
+7f441de60000-7f441de63000 r-xs 00043000 fe:03 102371289                  /var/data-integration_v421/lib/kettle-db.jar
+7f441de63000-7f441de6b000 r-xs 00066000 fe:03 102371287                  /var/data-integration_v421/lib/kettle-core.jar
+7f441de6b000-7f441de6c000 ---p 00000000 00:00 0 
+7f441de6c000-7f441df6c000 rwxp 00000000 00:00 0 
+7f441df6c000-7f441df6f000 ---p 00000000 00:00 0 
+7f441df6f000-7f441e06d000 rwxp 00000000 00:00 0 
+7f441e06d000-7f441e070000 ---p 00000000 00:00 0 
+7f441e070000-7f441e16e000 rwxp 00000000 00:00 0 
+7f441e16e000-7f441e171000 ---p 00000000 00:00 0 
+7f441e171000-7f441e26f000 rwxp 00000000 00:00 0 
+7f441e26f000-7f441e272000 ---p 00000000 00:00 0 
+7f441e272000-7f441e370000 rwxp 00000000 00:00 0 
+7f441e370000-7f441e4e5000 r-xp 00000000 fe:00 6217                       /usr/lib/locale/locale-archive (deleted)
+7f441e4e5000-7f441e4e8000 ---p 00000000 00:00 0 
+7f441e4e8000-7f441e5e6000 rwxp 00000000 00:00 0 
+7f441e5e6000-7f441e5e9000 ---p 00000000 00:00 0 
+7f441e5e9000-7f441e6e7000 rwxp 00000000 00:00 0 
+7f441e6e7000-7f441e6e8000 ---p 00000000 00:00 0 
+7f441e6e8000-7f4420000000 rwxp 00000000 00:00 0 
+7f4420000000-7f4421ac2000 rwxp 00000000 00:00 0 
+7f4421ac2000-7f4424000000 ---p 00000000 00:00 0 
+7f44240c9000-7f44240fd000 rwxp 00000000 00:00 0 
+7f44240fd000-7f4424295000 r-xs 03029000 fe:00 147435                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/rt.jar (deleted)
+7f4424295000-7f44242bd000 rwxp 00000000 00:00 0 
+7f44242bd000-7f44242be000 ---p 00000000 00:00 0 
+7f44242be000-7f44243be000 rwxp 00000000 00:00 0 
+7f44243be000-7f44243bf000 ---p 00000000 00:00 0 
+7f44243bf000-7f44244bf000 rwxp 00000000 00:00 0 
+7f44244bf000-7f44244c0000 ---p 00000000 00:00 0 
+7f44244c0000-7f44245c0000 rwxp 00000000 00:00 0 
+7f44245c0000-7f44245c1000 ---p 00000000 00:00 0 
+7f44245c1000-7f44246c1000 rwxp 00000000 00:00 0 
+7f44246c1000-7f44246c2000 ---p 00000000 00:00 0 
+7f44246c2000-7f44247c2000 rwxp 00000000 00:00 0 
+7f44247c2000-7f44247c3000 ---p 00000000 00:00 0 
+7f44247c3000-7f44248c3000 rwxp 00000000 00:00 0 
+7f44248c3000-7f44248c4000 ---p 00000000 00:00 0 
+7f44248c4000-7f44249c4000 rwxp 00000000 00:00 0 
+7f44249c4000-7f44249c5000 ---p 00000000 00:00 0 
+7f44249c5000-7f4424ac5000 rwxp 00000000 00:00 0 
+7f4424ac5000-7f4424ac6000 ---p 00000000 00:00 0 
+7f4424ac6000-7f4424bc6000 rwxp 00000000 00:00 0 
+7f4424bc6000-7f4424bc7000 ---p 00000000 00:00 0 
+7f4424bc7000-7f4424cc7000 rwxp 00000000 00:00 0 
+7f4424cc7000-7f4424cc8000 ---p 00000000 00:00 0 
+7f4424cc8000-7f4424dc8000 rwxp 00000000 00:00 0 
+7f4424dc8000-7f4424dc9000 ---p 00000000 00:00 0 
+7f4424dc9000-7f4424ec9000 rwxp 00000000 00:00 0 
+7f4424ec9000-7f4424eca000 ---p 00000000 00:00 0 
+7f4424eca000-7f4424fca000 rwxp 00000000 00:00 0 
+7f4424fca000-7f4424fcb000 ---p 00000000 00:00 0 
+7f4424fcb000-7f44250cb000 rwxp 00000000 00:00 0 
+7f44250cb000-7f44250cc000 ---p 00000000 00:00 0 
+7f44250cc000-7f44251cc000 rwxp 00000000 00:00 0 
+7f44251cc000-7f44251cd000 ---p 00000000 00:00 0 
+7f44251cd000-7f44252cd000 rwxp 00000000 00:00 0 
+7f44252cd000-7f44252ce000 ---p 00000000 00:00 0 
+7f44252ce000-7f44253ce000 rwxp 00000000 00:00 0 
+7f44253ce000-7f44253cf000 ---p 00000000 00:00 0 
+7f44253cf000-7f44254cf000 rwxp 00000000 00:00 0 
+7f44254cf000-7f44254d0000 ---p 00000000 00:00 0 
+7f44254d0000-7f44255d0000 rwxp 00000000 00:00 0 
+7f44255d0000-7f44255d1000 ---p 00000000 00:00 0 
+7f44255d1000-7f44256d1000 rwxp 00000000 00:00 0 
+7f44256d1000-7f44256d2000 ---p 00000000 00:00 0 
+7f44256d2000-7f44257d2000 rwxp 00000000 00:00 0 
+7f44257d2000-7f44257d3000 ---p 00000000 00:00 0 
+7f44257d3000-7f44258d3000 rwxp 00000000 00:00 0 
+7f44258d3000-7f44258d4000 ---p 00000000 00:00 0 
+7f44258d4000-7f44259e1000 rwxp 00000000 00:00 0 
+7f44259e1000-7f44259eb000 ---p 00000000 00:00 0 
+7f44259eb000-7f44259fd000 rwxp 00000000 00:00 0 
+7f44259fd000-7f4425b27000 rwxp 00000000 00:00 0 
+7f4425b27000-7f4425ca8000 ---p 00000000 00:00 0 
+7f4425ca8000-7f4425f53000 rwxp 00000000 00:00 0 
+7f4425f53000-7f4425f60000 rwxp 00000000 00:00 0 
+7f4425f60000-7f4425f6a000 ---p 00000000 00:00 0 
+7f4425f6a000-7f4425f7c000 rwxp 00000000 00:00 0 
+7f4425f7c000-7f44260a6000 rwxp 00000000 00:00 0 
+7f44260a6000-7f4426227000 ---p 00000000 00:00 0 
+7f4426227000-7f44264d1000 rwxp 00000000 00:00 0 
+7f44264d1000-7f442652a000 rwxp 00000000 00:00 0 
+7f442652a000-7f4426627000 ---p 00000000 00:00 0 
+7f4426627000-7f442677c000 rwxp 00000000 00:00 0 
+7f442677c000-7f4426a8d000 rwxp 00000000 00:00 0 
+7f4426a8d000-7f442977d000 rwxp 00000000 00:00 0 
+7f442977d000-7f442978b000 r-xp 00000000 fe:00 274321                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/libzip.so (deleted)
+7f442978b000-7f442988d000 ---p 0000e000 fe:00 274321                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/libzip.so (deleted)
+7f442988d000-7f4429890000 rwxp 00010000 fe:00 274321                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/libzip.so (deleted)
+7f4429890000-7f4429891000 rwxp 00000000 00:00 0 
+7f4429891000-7f442989d000 r-xp 00000000 fe:00 260679                     /lib/libnss_files-2.11.3.so
+7f442989d000-7f4429a9c000 ---p 0000c000 fe:00 260679                     /lib/libnss_files-2.11.3.so
+7f4429a9c000-7f4429a9d000 r-xp 0000b000 fe:00 260679                     /lib/libnss_files-2.11.3.so
+7f4429a9d000-7f4429a9e000 rwxp 0000c000 fe:00 260679                     /lib/libnss_files-2.11.3.so
+7f4429a9e000-7f4429aa8000 r-xp 00000000 fe:00 261382                     /lib/libnss_nis-2.11.3.so
+7f4429aa8000-7f4429ca7000 ---p 0000a000 fe:00 261382                     /lib/libnss_nis-2.11.3.so
+7f4429ca7000-7f4429ca8000 r-xp 00009000 fe:00 261382                     /lib/libnss_nis-2.11.3.so
+7f4429ca8000-7f4429ca9000 rwxp 0000a000 fe:00 261382                     /lib/libnss_nis-2.11.3.so
+7f4429ca9000-7f4429cb0000 r-xp 00000000 fe:00 261367                     /lib/libnss_compat-2.11.3.so
+7f4429cb0000-7f4429eaf000 ---p 00007000 fe:00 261367                     /lib/libnss_compat-2.11.3.so
+7f4429eaf000-7f4429eb0000 r-xp 00006000 fe:00 261367                     /lib/libnss_compat-2.11.3.so
+7f4429eb0000-7f4429eb1000 rwxp 00007000 fe:00 261367                     /lib/libnss_compat-2.11.3.so
+7f4429eb1000-7f4429ec6000 r-xp 00000000 fe:00 261372                     /lib/libnsl-2.11.3.so
+7f4429ec6000-7f442a0c5000 ---p 00015000 fe:00 261372                     /lib/libnsl-2.11.3.so
+7f442a0c5000-7f442a0c6000 r-xp 00014000 fe:00 261372                     /lib/libnsl-2.11.3.so
+7f442a0c6000-7f442a0c7000 rwxp 00015000 fe:00 261372                     /lib/libnsl-2.11.3.so
+7f442a0c7000-7f442a0c9000 rwxp 00000000 00:00 0 
+7f442a0c9000-7f442a0f2000 r-xp 00000000 fe:00 274281                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/libjava.so (deleted)
+7f442a0f2000-7f442a1f1000 ---p 00029000 fe:00 274281                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/libjava.so (deleted)
+7f442a1f1000-7f442a1f8000 rwxp 00028000 fe:00 274281                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/libjava.so (deleted)
+7f442a1f8000-7f442a205000 r-xp 00000000 fe:00 274294                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/libverify.so (deleted)
+7f442a205000-7f442a304000 ---p 0000d000 fe:00 274294                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/libverify.so (deleted)
+7f442a304000-7f442a307000 rwxp 0000c000 fe:00 274294                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/libverify.so (deleted)
+7f442a307000-7f442a30e000 r-xp 00000000 fe:00 261298                     /lib/librt-2.11.3.so
+7f442a30e000-7f442a50d000 ---p 00007000 fe:00 261298                     /lib/librt-2.11.3.so
+7f442a50d000-7f442a50e000 r-xp 00006000 fe:00 261298                     /lib/librt-2.11.3.so
+7f442a50e000-7f442a50f000 rwxp 00007000 fe:00 261298                     /lib/librt-2.11.3.so
+7f442a50f000-7f442a512000 ---p 00000000 00:00 0 
+7f442a512000-7f442a610000 rwxp 00000000 00:00 0 
+7f442a610000-7f442a690000 r-xp 00000000 fe:00 261381                     /lib/libm-2.11.3.so
+7f442a690000-7f442a890000 ---p 00080000 fe:00 261381                     /lib/libm-2.11.3.so
+7f442a890000-7f442a891000 r-xp 00080000 fe:00 261381                     /lib/libm-2.11.3.so
+7f442a891000-7f442a892000 rwxp 00081000 fe:00 261381                     /lib/libm-2.11.3.so
+7f442a892000-7f442b1ac000 r-xp 00000000 fe:00 274292                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/server/libjvm.so (deleted)
+7f442b1ac000-7f442b2ae000 ---p 0091a000 fe:00 274292                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/server/libjvm.so (deleted)
+7f442b2ae000-7f442b463000 rwxp 0091c000 fe:00 274292                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/server/libjvm.so (deleted)
+7f442b463000-7f442b49d000 rwxp 00000000 00:00 0 
+7f442b49d000-7f442b5f6000 r-xp 00000000 fe:00 261368                     /lib/libc-2.11.3.so
+7f442b5f6000-7f442b7f5000 ---p 00159000 fe:00 261368                     /lib/libc-2.11.3.so
+7f442b7f5000-7f442b7f9000 r-xp 00158000 fe:00 261368                     /lib/libc-2.11.3.so
+7f442b7f9000-7f442b7fa000 rwxp 0015c000 fe:00 261368                     /lib/libc-2.11.3.so
+7f442b7fa000-7f442b7ff000 rwxp 00000000 00:00 0 
+7f442b7ff000-7f442b801000 r-xp 00000000 fe:00 261380                     /lib/libdl-2.11.3.so
+7f442b801000-7f442ba01000 ---p 00002000 fe:00 261380                     /lib/libdl-2.11.3.so
+7f442ba01000-7f442ba02000 r-xp 00002000 fe:00 261380                     /lib/libdl-2.11.3.so
+7f442ba02000-7f442ba03000 rwxp 00003000 fe:00 261380                     /lib/libdl-2.11.3.so
+7f442ba03000-7f442ba1a000 r-xp 00000000 fe:00 261296                     /lib/libpthread-2.11.3.so
+7f442ba1a000-7f442bc19000 ---p 00017000 fe:00 261296                     /lib/libpthread-2.11.3.so
+7f442bc19000-7f442bc1a000 r-xp 00016000 fe:00 261296                     /lib/libpthread-2.11.3.so
+7f442bc1a000-7f442bc1b000 rwxp 00017000 fe:00 261296                     /lib/libpthread-2.11.3.so
+7f442bc1b000-7f442bc1f000 rwxp 00000000 00:00 0 
+7f442bc1f000-7f442bc3d000 r-xp 00000000 fe:00 261297                     /lib/ld-2.11.3.so
+7f442bc5e000-7f442bc61000 r-xs 00013000 fe:00 147341                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/jce.jar (deleted)
+7f442bc61000-7f442bc6e000 rwxp 00000000 00:00 0 
+7f442bc6e000-7f442bd21000 rwxp 00000000 00:00 0 
+7f442bd21000-7f442bd24000 rwxp 00000000 00:00 0 
+7f442bd24000-7f442bd2b000 r-xp 00000000 fe:00 274307                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/jli/libjli.so (deleted)
+7f442bd2b000-7f442be2c000 ---p 00007000 fe:00 274307                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/jli/libjli.so (deleted)
+7f442be2c000-7f442be2e000 rwxp 00008000 fe:00 274307                     /usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/jli/libjli.so (deleted)
+7f442be2e000-7f442be2f000 rwxp 00000000 00:00 0 
+7f442be2f000-7f442be30000 r-xs 00002000 fe:03 102367541                  /var/data-integration_v421/plugins/hour-partitioner.jar
+7f442be30000-7f442be38000 rwxs 00000000 fe:00 402283                     /tmp/hsperfdata_root/8454
+7f442be38000-7f442be39000 rwxp 00000000 00:00 0 
+7f442be39000-7f442be3a000 r-xp 00000000 00:00 0 
+7f442be3a000-7f442be3c000 rwxp 00000000 00:00 0 
+7f442be3c000-7f442be3d000 r-xp 0001d000 fe:00 261297                     /lib/ld-2.11.3.so
+7f442be3d000-7f442be3e000 rwxp 0001e000 fe:00 261297                     /lib/ld-2.11.3.so
+7f442be3e000-7f442be3f000 rwxp 00000000 00:00 0 
+7fff9473a000-7fff94753000 rwxp 00000000 00:00 0                          [stack]
+7fff94772000-7fff94773000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Xmx4096m -DDI_HOME=/var/data-integration_v421 -DKETTLE_HOME= -DKETTLE_REPOSITORY= -DKETTLE_USER= -DKETTLE_PASSWORD= -DKETTLE_PLUGIN_PACKAGES= -DKETTLE_LOG_SIZE_LIMIT= 
+java_command: org.pentaho.di.kitchen.Kitchen -rep:SNP_ETL -job:ODS_S_Tran_MainJob -user:admin -dir:/Audit/ -pass:admin -loglevel:Debug
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+USERNAME=root
+LD_LIBRARY_PATH=/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64/server:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/amd64:/usr/lib/jvm/java-6-sun-1.6.0.26/jre/../lib/amd64
+SHELL=/bin/bash
+DISPLAY=:1.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x85f800], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x85f800], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x70e300], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x70e300], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x70e300], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x70e300], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x711110], sa_mask[0]=0x00000000, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x710d10], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libjvm.so+0x710d10], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTERM: [libjvm.so+0x710d10], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x710d10], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:6.0.5
+
+uname:Linux 2.6.32-5-amd64 #1 SMP Sun May 6 04:00:17 UTC 2012 x86_64
+libc:glibc 2.11.3 NPTL 2.11.3 
+rlimit: STACK 8192k, CORE 0k, NPROC infinity, NOFILE 1024, AS infinity
+load average:0.17 0.18 0.20
+
+/proc/meminfo:
+MemTotal:       140564324 kB
+MemFree:        49840452 kB
+Buffers:          558984 kB
+Cached:         75700296 kB
+SwapCached:            0 kB
+Active:         80894624 kB
+Inactive:        7618888 kB
+Active(anon):   12254060 kB
+Inactive(anon):    18640 kB
+Active(file):   68640564 kB
+Inactive(file):  7600248 kB
+Unevictable:          80 kB
+Mlocked:              80 kB
+SwapTotal:       3907576 kB
+SwapFree:        3907576 kB
+Dirty:               204 kB
+Writeback:             0 kB
+AnonPages:      12254420 kB
+Mapped:           130352 kB
+Shmem:             18440 kB
+Slab:            1661464 kB
+SReclaimable:    1546892 kB
+SUnreclaim:       114572 kB
+KernelStack:       10512 kB
+PageTables:        87680 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    74189736 kB
+Committed_AS:   32678052 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      677084 kB
+VmallocChunk:   34359055276 kB
+HardwareCorrupted:     0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       12288 kB
+DirectMap2M:    142585856 kB
+
+
+CPU:total 32 (8 cores per cpu, 2 threads per core) family 6 model 46 stepping 6, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, ht
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 0
+cpu cores	: 8
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4522.81
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 1
+cpu cores	: 8
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.78
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 2
+cpu cores	: 8
+apicid		: 4
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.77
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 3
+cpu cores	: 8
+apicid		: 6
+initial apicid	: 6
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.78
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 4
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 8
+cpu cores	: 8
+apicid		: 16
+initial apicid	: 16
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.75
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 5
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 9
+cpu cores	: 8
+apicid		: 18
+initial apicid	: 18
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.77
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 6
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 10
+cpu cores	: 8
+apicid		: 20
+initial apicid	: 20
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.77
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 7
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 11
+cpu cores	: 8
+apicid		: 22
+initial apicid	: 22
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.76
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 8
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 0
+cpu cores	: 8
+apicid		: 32
+initial apicid	: 32
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.81
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 9
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 1
+cpu cores	: 8
+apicid		: 34
+initial apicid	: 34
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 10
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 2
+cpu cores	: 8
+apicid		: 36
+initial apicid	: 36
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.92
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 11
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 3
+cpu cores	: 8
+apicid		: 38
+initial apicid	: 38
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.90
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 12
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 8
+cpu cores	: 8
+apicid		: 48
+initial apicid	: 48
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.81
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 13
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 9
+cpu cores	: 8
+apicid		: 50
+initial apicid	: 50
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.84
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 14
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 10
+cpu cores	: 8
+apicid		: 52
+initial apicid	: 52
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.90
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 15
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 11
+cpu cores	: 8
+apicid		: 54
+initial apicid	: 54
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.82
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 16
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 0
+cpu cores	: 8
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.77
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 17
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 1
+cpu cores	: 8
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.82
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 18
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 2
+cpu cores	: 8
+apicid		: 5
+initial apicid	: 5
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.84
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 19
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 3
+cpu cores	: 8
+apicid		: 7
+initial apicid	: 7
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.88
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 20
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 8
+cpu cores	: 8
+apicid		: 17
+initial apicid	: 17
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.82
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 21
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 9
+cpu cores	: 8
+apicid		: 19
+initial apicid	: 19
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.80
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 22
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 10
+cpu cores	: 8
+apicid		: 21
+initial apicid	: 21
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.82
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 23
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 0
+siblings	: 16
+core id		: 11
+cpu cores	: 8
+apicid		: 23
+initial apicid	: 23
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.85
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 24
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 0
+cpu cores	: 8
+apicid		: 33
+initial apicid	: 33
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.86
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 25
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 1
+cpu cores	: 8
+apicid		: 35
+initial apicid	: 35
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.83
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 26
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 2
+cpu cores	: 8
+apicid		: 37
+initial apicid	: 37
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.87
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 27
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 3
+cpu cores	: 8
+apicid		: 39
+initial apicid	: 39
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.87
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 28
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 8
+cpu cores	: 8
+apicid		: 49
+initial apicid	: 49
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.90
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 29
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 9
+cpu cores	: 8
+apicid		: 51
+initial apicid	: 51
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.80
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 30
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 10
+cpu cores	: 8
+apicid		: 53
+initial apicid	: 53
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.85
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+processor	: 31
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 46
+model name	: Intel(R) Xeon(R) CPU           X7560  @ 2.27GHz
+stepping	: 6
+cpu MHz		: 2261.408
+cache size	: 24576 KB
+physical id	: 1
+siblings	: 16
+core id		: 11
+cpu cores	: 8
+apicid		: 55
+initial apicid	: 55
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 sse4_2 x2apic popcnt lahf_lm ida tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 4521.87
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 44 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 140564324k(49840452k free), swap 3907576k(3907576k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (20.1-b02) for linux-amd64 JRE (1.6.0_26-b03), built on May  4 2011 01:13:47 by "java_re" with gcc 3.2.2 (SuSE Linux)
+
+time: Fri Jul 13 17:10:59 2012
+elapsed time: 3803 seconds
+

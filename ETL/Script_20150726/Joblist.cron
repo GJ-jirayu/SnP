@@ -1,0 +1,2 @@
+#30 01 * * * /home/bi/BI/ETL/Script/SMI_StoreManagement_Mainjob.sh
+30 01 * * * /home/bi/BI/ETL/Script/POS_Audit_ETL_MainJob.sh
